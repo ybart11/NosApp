@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AzureSQLDatabase {
-
-
     private static final String SERVER = "nostalgiaapp.database.windows.net";
     private static final String DATABASE = "nostalgiaapp";
     private static final String USERNAME = "nostalgiaapp";
@@ -27,8 +25,8 @@ public class AzureSQLDatabase {
                     "hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
     // Insert a new record into the database
-    public void addClip(String videoID, String showname) throws SQLException {
-        String query = "INSERT INTO ShowClips (videoID, showname) VALUES (?, ?)";
+    public void addClips(String videoID, String showname) throws SQLException {
+        String query = "INSERT INTO dbo.ShowClips (videoID, showname) VALUES (?, ?)";
         try (Connection connection = DriverManager.getConnection(CONNECTION_STRING);
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, videoID);
@@ -43,8 +41,8 @@ public class AzureSQLDatabase {
     }
 
     // Update an existing record in the database
-    public static void updateClip(String videoID, String showname) throws SQLException {
-        String query = "UPDATE users SET videoID=?, showname=? WHERE videoID=?";
+    public static void updateClips(String videoID, String showname) throws SQLException {
+        String query = "UPDATE dbo.ShowClips SET videoID=?, showname=? WHERE videoID=?";
         try (Connection connection = DriverManager.getConnection(CONNECTION_STRING);
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, videoID);
@@ -58,20 +56,25 @@ public class AzureSQLDatabase {
     }
 
     // Delete an existing record from the database
-    public static void deleteRecord(int id) throws SQLException {
-        String query = "DELETE FROM users WHERE id=?";
+    public static void deleteClips(String videoID) throws SQLException {
+        String query = "DELETE FROM dbo.ShowClips WHERE videoID=?";
         try (Connection connection = DriverManager.getConnection(CONNECTION_STRING);
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, id);
+            statement.setString(1, videoID);
             statement.executeUpdate();
+        }
+        catch(SQLException e){
+            Context Context = null;
+            Toast.makeText(null, "Error retrieving show details", Toast.LENGTH_SHORT).show();
         }
     }
 
     // Get a list of all records in the database
-    public static ResultSet getAllRecords() throws SQLException {
-        String query = "SELECT * FROM users";
+    public static ResultSet getAllClips(String showname) throws SQLException {
+        String query = "SELECT * FROM dbo.ShowClips WHERE showname=?";
         Connection connection = DriverManager.getConnection(CONNECTION_STRING);
         PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, showname);
         return statement.executeQuery();
     }
 }
