@@ -6,61 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textViewAhadu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Ahadu!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewYovany"
-        app:layout_constraintVertical_bias="0.101" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="407dp"
+        android:layout_height="127dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/textViewYovany"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Yovany!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="116dp"
+        android:layout_height="116dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159"
+        app:srcCompat="@drawable/Danny_Phantom_logo" />
 
-    <TextView
-        android:id="@+id/textViewJaffer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Jaffer!!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAhadu"
-        app:layout_constraintVertical_bias="0.126" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Nico!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="119dp"
+        android:layout_height="117dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.16"
+        app:srcCompat="@drawable/Hannah_Montana_logo" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="118dp"
+        android:layout_height="115dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161"
+        app:srcCompat="@drawable/Courage_the_Cowardly_Dog_logo" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="118dp"
+        android:layout_height="112dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395"
+        app:srcCompat="@drawable/Ben_10_logo" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="117dp"
+        android:layout_height="116dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.398"
+        app:srcCompat="@drawable/ICarly_Logo" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="118dp"
+        android:layout_height="117dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.399"
+        app:srcCompat="@drawable/Jimmy_Neutron_logo" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="112dp"
+        android:layout_height="103dp"
+        android:background="#D5D6D6"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.625"
+        app:srcCompat="@drawable/Kim_Possible_logo" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="114dp"
+        android:layout_height="110dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627"
+        app:srcCompat="@drawable/Rugrats_logo" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="113dp"
+        android:layout_height="114dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/SpongeBob_SquarePants"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="308dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
