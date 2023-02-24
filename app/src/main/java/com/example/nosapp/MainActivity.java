@@ -2,12 +2,16 @@ package com.example.nosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewButton();
         randomButton();
         homeButton();
         favoritesButton();
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         loadShows();
     }
 
+
+
     private void loadShows() {
 
         showList.add(new Show("Show 1", R.drawable.jimmy_neutron_logo));
@@ -46,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
         showList.add(new Show("Show 3", R.drawable.the_fairly_oddparents_logo));
 
         showAdapter.notifyDataSetChanged();
+    }
+
+
+    private void viewButton() {
+        Button ibList = (Button) findViewById(R.id.buttonView);
+        ibList.setOnClickListener (new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ViewActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
     }
 
     private void randomButton() {
