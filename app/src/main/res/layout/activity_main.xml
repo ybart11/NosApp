@@ -34,7 +34,7 @@
             android:maxWidth="128dp"
             android:maxHeight="128dp"
             android:scaleType="fitCenter"
-            app:layout_constraintEnd_toStartOf="@+id/buttonAddContact"
+            app:layout_constraintEnd_toStartOf="@+id/buttonView"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/kim_possible_logo" />
 

@@ -22,6 +22,16 @@ public class MainActivity extends AppCompatActivity {
     private ShowAdapter showAdapter;
     private List<Show> showList;
 
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+            startActivity(intent);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
