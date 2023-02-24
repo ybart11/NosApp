@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -21,6 +22,7 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
         playVideo("pztX2ay7gA4");
 
+        showShareMenu();
         randomButton();
         homeButton();
         favoritesButton();
@@ -35,6 +37,17 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
                 youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+    }
+    private void showShareMenu() {
+        Button ibList = (Button) findViewById(R.id.buttonShare);
+        ibList.setOnClickListener (new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Share this text");
+                startActivity(Intent.createChooser(shareIntent, "Share using"));
             }
         });
     }
