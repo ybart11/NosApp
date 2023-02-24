@@ -92,9 +92,9 @@
                 android:id="@+id/editChannel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="128dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/textChannel"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textChannel" />
 
             <TextView
@@ -111,9 +111,9 @@
                 android:id="@+id/editStartDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="128dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/textStartDate"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textStartDate" />
 
             <TextView
@@ -130,9 +130,9 @@
                 android:id="@+id/editEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="128dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/textEndDate"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textEndDate" />
 
             <TextView
@@ -149,9 +149,9 @@
                 android:id="@+id/editSeasons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="128dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/textSeasons"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textSeasons" />
 
             <TextView
@@ -168,9 +168,9 @@
                 android:id="@+id/editEpisodes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="128dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/textEpisodes"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textEpisodes" />
 
             <TextView
@@ -188,9 +188,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
                 android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textSynopsis"/>
+                app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

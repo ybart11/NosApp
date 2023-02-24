@@ -22,7 +22,7 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
         playVideo("pztX2ay7gA4");
 
-        showShareMenu();
+        shareButton();
         randomButton();
         homeButton();
         favoritesButton();
@@ -40,7 +40,7 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
     }
-    private void showShareMenu() {
+    private void shareButton() {
         Button ibList = (Button) findViewById(R.id.buttonShare);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
