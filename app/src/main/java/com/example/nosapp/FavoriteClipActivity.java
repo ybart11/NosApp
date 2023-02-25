@@ -50,10 +50,11 @@ public class FavoriteClipActivity extends AppCompatActivity {
 
 
     private void backButton() {
-        Button ibList = (Button) findViewById(R.id.buttonSettings);
+        Button ibList = (Button) findViewById(R.id.buttonBack);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(FavoriteClipActivity.this,FavoritesActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
