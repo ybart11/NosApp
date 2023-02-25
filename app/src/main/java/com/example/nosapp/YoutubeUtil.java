@@ -35,6 +35,8 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
         mTitleTextView = titleTextView;
     }
 
+    public YoutubeUtil () {}
+
     @Override
     protected Video doInBackground(String... params) {
         YouTube youTube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(),
@@ -57,11 +59,11 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
     @Override
     protected void onPostExecute (Video video) {
         if (video != null) {
-            mTitleTextView.setText("Title: " + video.getSnippet().getTitle());
+            mTitleTextView.setText(video.getSnippet().getTitle());
         }
     }
 
-    private void searchForRandomVideo(String keyword, String relatedVideoId) {
+    String searchForRandomVideo(String showname) {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -74,18 +76,20 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
             YouTube.Search.List searchList = mYouTube.search().list("id");
             searchList.setKey(API_KEY);
             searchList.setType("video");
-            searchList.setRelatedToVideoId(relatedVideoId);
+            //searchList.setRelatedToVideoId();
             searchList.setFields("items(id(videoId))");
             searchList.setMaxResults(1L);
             searchList.setOrder("relevance");
             searchList.setVideoDuration("short");
-            String [] keywords = {keyword};
+            String [] keywords = {showname};
             searchList.setQ(keywords[new Random().nextInt(keywords.length)]);
             SearchListResponse response = searchList.execute();
             String videoId = response.getItems().get(0).getId().getVideoId();
             Log.d("Random Video ID", videoId);
+            return videoId;
         } catch (IOException e) {
             e.printStackTrace();
+            return "Failed";
         }
     }
 }

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ShowAdapter showAdapter;
     private List<Show> showList;
+    YoutubeUtil youtubeUtil;
 
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         showAdapter = new ShowAdapter(this, showList);
         recyclerView.setAdapter(showAdapter);
 
+        youtubeUtil = new YoutubeUtil();
+
+
         loadShows();
     }
 
@@ -74,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,ViewActivity.class);
+
+                // Gets new videoId to be passed to View Activity
+                intent.putExtra("randomVideoString",
+                        youtubeUtil.searchForRandomVideo("SpongeBob SquarePants"));
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
