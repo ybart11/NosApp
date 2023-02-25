@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ShowAdapter showAdapter;
     private List<Show> showList;
 
+
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -110,5 +111,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
