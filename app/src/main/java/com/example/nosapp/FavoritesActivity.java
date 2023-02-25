@@ -43,7 +43,7 @@ public class FavoritesActivity extends AppCompatActivity {
 
     private void loadShows() {
 
-        showList.add(new Show("Show 1", R.drawable.jimmy_neutron_logo));
+        showList.add(new Show("Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
         showList.add(new Show("Show 2", R.drawable.kim_possible_logo));
         showList.add(new Show("Show 3", R.drawable.the_fairly_oddparents_logo));
         showList.add(new Show("Show 4", R.drawable.hannah_montana_logo));
