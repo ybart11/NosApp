@@ -76,7 +76,7 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
             YouTube.Search.List searchList = mYouTube.search().list("id");
             searchList.setKey(API_KEY);
             searchList.setType("video");
-            //searchList.setRelatedToVideoId();
+            searchList.setRelatedToVideoId("pztX2ay7gA4"); // Spongebob
             searchList.setFields("items(id(videoId))");
             searchList.setMaxResults(1L);
             searchList.setOrder("relevance");
