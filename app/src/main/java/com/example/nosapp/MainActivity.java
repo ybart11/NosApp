@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         showList.add(new Show("Show 1", R.drawable.jimmy_neutron_logo));
         showList.add(new Show("Show 2", R.drawable.kim_possible_logo));
         showList.add(new Show("Show 3", R.drawable.the_fairly_oddparents_logo));
+        showList.add(new Show("Show 4", R.drawable.hannah_montana_logo));
+        showList.add(new Show("Show 5", R.drawable.courage_the_cowardly_dog_logo));
 
         showAdapter.notifyDataSetChanged();
     }

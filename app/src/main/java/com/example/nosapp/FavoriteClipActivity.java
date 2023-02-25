@@ -13,56 +13,53 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritesActivity extends AppCompatActivity {
+public class FavoriteClipActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ShowAdapter showAdapter;
-    private List<Show> showList;
-
+    private FavoriteClipAdapter favoriteclipAdapter;
+    private ArrayList<FavoriteClip> favoriteClipArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorites);
+        setContentView(R.layout.activity_favorites_clips);
 
-        clipsButton();
+        recyclerView = findViewById(R.id.rvFavoriteClips);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+
+        favoriteClipArrayList = new ArrayList<>();
+
+        favoriteclipAdapter = new FavoriteClipAdapter(favoriteClipArrayList, this);
+        recyclerView.setAdapter(favoriteclipAdapter);
+
+        loadClips();
+
+        backButton();
+        shareButton();
+
         randomButton();
         homeButton();
         favoritesButton();
-
-        recyclerView = findViewById(R.id.rvFavorites);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-
-        showList = new ArrayList<>();
-
-        showAdapter = new ShowAdapter(this, showList);
-        recyclerView.setAdapter(showAdapter);
-
-        loadShows();
     }
 
-    private void loadShows() {
+    private void loadClips() {
 
-        showList.add(new Show("Show 1", R.drawable.jimmy_neutron_logo));
-        showList.add(new Show("Show 2", R.drawable.kim_possible_logo));
-        showList.add(new Show("Show 3", R.drawable.the_fairly_oddparents_logo));
-        showList.add(new Show("Show 4", R.drawable.hannah_montana_logo));
-        showList.add(new Show("Show 5", R.drawable.courage_the_cowardly_dog_logo));
+        favoriteClipArrayList.add(new FavoriteClip("Show 1", "123","456"));
 
-        showAdapter.notifyDataSetChanged();
+        favoriteclipAdapter.notifyDataSetChanged();
     }
 
-    private void clipsButton() {
-        Button b = (Button) findViewById(R.id.buttonClips);
-        b.setOnClickListener (new View.OnClickListener() {
+
+    private void backButton() {
+        Button ibList = (Button) findViewById(R.id.buttonSettings);
+        ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoritesActivity.this, FavoriteClipActivity.class);
+                Intent intent = new Intent(FavoriteClipActivity.this,FavoritesActivity.class);
                 startActivity(intent);
             }
         });
     }
-
-    private void settingsButton() {
+    private void shareButton() {
         Button ibList = (Button) findViewById(R.id.buttonShare);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
@@ -78,7 +75,7 @@ public class FavoritesActivity extends AppCompatActivity {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoritesActivity.this,RandomActivity.class);
+                Intent intent = new Intent(FavoriteClipActivity.this,RandomActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -88,7 +85,7 @@ public class FavoritesActivity extends AppCompatActivity {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
+                Intent intent = new Intent(FavoriteClipActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -99,7 +96,7 @@ public class FavoritesActivity extends AppCompatActivity {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoritesActivity.this, FavoritesActivity.class);
+                Intent intent = new Intent(FavoriteClipActivity.this, FavoritesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
