@@ -6,6 +6,11 @@ android {
     namespace 'com.example.nosapp'
     compileSdk 33
 
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+    }
+
+
     defaultConfig {
         applicationId "com.example.nosapp"
         minSdk 33
@@ -15,6 +20,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+
 
     buildTypes {
         release {
