@@ -57,7 +57,9 @@ public class ViewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "www.youtube.com/watch?v=" +
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
+                        " Nostalgia App: " +
+                        "\nwww.youtube.com/watch?v=" +
                         extras.getString("randomVideoString"));
                 startActivity(Intent.createChooser(shareIntent, "Share using"));
             }
