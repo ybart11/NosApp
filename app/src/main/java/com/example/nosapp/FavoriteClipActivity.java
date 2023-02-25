@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FavoriteClipActivity extends AppCompatActivity {
 
@@ -22,7 +21,7 @@ public class FavoriteClipActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorites_clips);
+        setContentView(R.layout.activity_favorite_clip);
 
         recyclerView = findViewById(R.id.rvFavoriteClips);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
@@ -32,14 +31,14 @@ public class FavoriteClipActivity extends AppCompatActivity {
         favoriteclipAdapter = new FavoriteClipAdapter(favoriteClipArrayList, this);
         recyclerView.setAdapter(favoriteclipAdapter);
 
-        loadClips();
 
         backButton();
-        shareButton();
 
         randomButton();
         homeButton();
         favoritesButton();
+
+        loadClips();
     }
 
     private void loadClips() {
@@ -56,17 +55,6 @@ public class FavoriteClipActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(FavoriteClipActivity.this,FavoritesActivity.class);
                 startActivity(intent);
-            }
-        });
-    }
-    private void shareButton() {
-        Button ibList = (Button) findViewById(R.id.buttonShare);
-        ibList.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Share this text");
-                startActivity(Intent.createChooser(shareIntent, "Share using"));
             }
         });
     }
