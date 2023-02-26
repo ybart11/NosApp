@@ -1,16 +1,15 @@
 package com.example.nosapp;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AzureSQLDatabase {
-    private static final String SERVER = "nostalgiaapp.database.windows.net";
+public class AzureSQL {
+    /*private static final String SERVER = "nostalgiaapp.database.windows.net";
     private static final String DATABASE = "nostalgiaapp";
     private static final String USERNAME = "nostalgiaapp";
     private static final String PASSWORD = "BigPapa123";
@@ -76,7 +75,65 @@ public class AzureSQLDatabase {
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, showname);
         return statement.executeQuery();
+    }*/
+
+    public static List<Show> getShowDetail(String showname) {
+        Connection connection;
+        String query = "SELECT showname, network, startDate, endDate, seasons, episodes, synopsis from ShowDetails WHERE showname=?";
+        List<Show> showList = new ArrayList<>();
+
+        AzureCon con = new AzureCon();
+        connection = con.conclass();
+
+        try (
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, showname);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("showname");
+                String network = resultSet.getString("network");
+                Date startDate = resultSet.getDate("startDate");
+                Date endDate = resultSet.getDate("endDate");
+                int seasons = resultSet.getInt("seasons");
+                int episodes = resultSet.getInt("episodes");
+                String synopsis = resultSet.getString("synopsis");
+
+                Show show = new Show(name, network, startDate, endDate, seasons, episodes, synopsis);
+                showList.add(show);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return showList;
     }
+
+    /*public static List<Show> getShows() {
+        String query = "SELECT  FROM dbo.ShowClips";
+        List<Show> showList = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(CONNECTION_STRING);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("showname");
+                int logo = resultSet.getInt("logo");
+
+
+                Show show = new Show(name, logo);
+                showList.add(show);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return showList;
+    }*/
+
+
+
 
 
 

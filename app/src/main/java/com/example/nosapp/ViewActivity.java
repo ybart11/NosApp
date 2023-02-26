@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import java.util.List;
 
 public class ViewActivity extends AppCompatActivity {
     YouTubePlayerView youTubePlayerView;
@@ -23,6 +26,7 @@ public class ViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+
         shareButton();
         randomButton();
         homeButton();
@@ -30,6 +34,8 @@ public class ViewActivity extends AppCompatActivity {
 
         extras = getIntent().getExtras();
         displayClip(extras.getString("randomVideoString"));
+        addDetails(extras.getString("randomVideoString2"));
+
     }
 
     private void displayClip (String videoId) {
@@ -49,6 +55,39 @@ public class ViewActivity extends AppCompatActivity {
         youtubeUtil = new YoutubeUtil(titleTextView);
         youtubeUtil.execute(videoId);
     }
+
+    private void addDetails(String showname) {
+        AzureSQL az = new AzureSQL();
+        List<Show> details = az.getShowDetail(showname);
+
+        if (details.isEmpty()) {
+            // handle the case where there are no shows with the given name
+            Log.d("addDetails", "No shows found with name " + showname);
+            return;
+        }
+
+        TextView editShowName = findViewById(R.id.textShowName);
+        TextView editChannel = findViewById(R.id.editChannel);
+        TextView editStartDate = findViewById(R.id.editStartDate);
+        TextView editEndDate = findViewById(R.id.editEndDate);
+        TextView editSeasons = findViewById(R.id.editSeasons);
+        TextView editEpisodes = findViewById(R.id.editEpisodes);
+        TextView editSynopsis = findViewById(R.id.editSynopsis);
+
+        for (Show show : details) {
+            Log.d("addDetails", "Show: " + show.getShowName() + ", " + show.getChannel() + ", " + show.getStartDate() + ", " + show.getEndDate() + ", " + show.getSeasons() + ", " + show.getEpisodes() + ", " + show.getSynopsis());
+
+            editShowName.setText(show.getShowName());
+            editChannel.setText(show.getChannel());
+            editStartDate.setText(show.getStartDate().toString()); // or use a SimpleDateFormat to format the date
+            editEndDate.setText(show.getEndDate().toString()); // or use a SimpleDateFormat to format the date
+            editSeasons.setText(Integer.toString(show.getSeasons()));
+            editEpisodes.setText(Integer.toString(show.getEpisodes()));
+            editSynopsis.setText(show.getSynopsis());
+        }
+    }
+
+
 
 
     private void shareButton() {
@@ -97,4 +136,6 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
