@@ -44,27 +44,28 @@ public class MainActivity extends AppCompatActivity {
 
         youtubeUtil = new YoutubeUtil();
 
-        String showname = "Ben 10";
 
-
-        //loadShows();
+        loadShows();
     }
 
 
 
-    /*private void loadShows() {
-        AzureSQL az = new AzureSQL();
+    private void loadShows() {
+        /*AzureSQL az = new AzureSQL();
         List<Show> showList = az.getShows();
 
         ShowAdapter adapter = new ShowAdapter(this, showList);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
 
 
-
-
+        showList.add(new Show("Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
+        showList.add(new Show("Show 2", R.drawable.kim_possible_logo));
+        showList.add(new Show("Show 3", R.drawable.the_fairly_oddparents_logo));
+        showList.add(new Show("Show 4", R.drawable.hannah_montana_logo));
+        showList.add(new Show("Show 5", R.drawable.courage_the_cowardly_dog_logo));
 
         showAdapter.notifyDataSetChanged();
-    }*/
+    }
 
 
     private void viewButton() {

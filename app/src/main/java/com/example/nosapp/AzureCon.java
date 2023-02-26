@@ -13,24 +13,23 @@ public class AzureCon {
     public Connection conclass()
     {
 
-        final String SERVER = "nostalgiaapp.database.windows.net";
-        final String DATABASE = "nostalgiaapp";
-        final String USERNAME = "nostalgiaapp";
-        final String PASSWORD = "BigPapa123";
+        final String s = "nostalgiaapp.database.windows.net";
+        final String dB = "nostalgiaapp";
+        final String uN = "nostalgiaapp";
+        final String pW = "BigPapa123";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
 
 
-        // Connection string for the Azure SQL Database
         try{
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            String CONNECTION_STRING = "jdbc:jtds:sqlserver://" + SERVER + ":1433;" +
-                            "database=" + DATABASE + ";" +
-                            "user=" + USERNAME + ";" +
-                            "password=" + PASSWORD + ";" + "databaseName=nosapp;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=60;ssl=request;";
-            con = DriverManager.getConnection(CONNECTION_STRING);
+            String cS = "jdbc:jtds:sqlserver://" + s + ":1433;" +
+                            "database=" + dB + ";" +
+                            "user=" + uN + ";" +
+                            "password=" + pW + ";" + "databaseName=nosapp;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;ssl=request;";
+            con = DriverManager.getConnection(cS);
         }
         catch(Exception e){
             Log.e("Error is",e.getMessage());

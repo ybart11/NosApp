@@ -34,7 +34,9 @@ public class Show {
 
     }
 
-    public Show(String showname, String channel, Date startDate, Date endDate, int seasons, int episodes, String synopsis) {
+    public Show(String showname, String channel, Date startDate,
+                Date endDate, int seasons, int episodes,
+                String synopsis) {
         this.showname = showname;
         this.channel = channel;
         this.startDate = startDate;
