@@ -33,7 +33,7 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ShowViewHolder
     @Override
     public void onBindViewHolder(@NonNull ShowViewHolder holder, int position) {
         Show show = showList.get(position);
-        holder.showImage.setImageResource(show.getImage());
+        holder.showImage.setImageResource(show.getLogo());
     }
 
     @Override
