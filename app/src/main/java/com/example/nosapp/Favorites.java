@@ -2,7 +2,8 @@ package com.example.nosapp;
 
 import java.util.Date;
 
-public class Show {
+public class Favorites {
+    private int showID;
     private String showname;
     private String channel;
     private String type;
@@ -13,14 +14,14 @@ public class Show {
     private String synopsis;
     private int logo;
 
-    public Show() {
+    public Favorites() {
 
     }
 
 
-    public Show(String showname, String channel, String type,
-                Date startDate, Date endDate, int seasons,
-                int episodes, String synopsis, int logo) {
+    public Favorites(String showname, String channel, String type,
+                     Date startDate, Date endDate, int seasons,
+                     int episodes, String synopsis, int logo) {
 
         this.showname = showname;
         this.channel = channel;
@@ -34,9 +35,9 @@ public class Show {
 
     }
 
-    public Show(String showname, String channel, Date startDate,
-                Date endDate, int seasons, int episodes,
-                String synopsis) {
+    public Favorites(String showname, String channel, Date startDate,
+                     Date endDate, int seasons, int episodes,
+                     String synopsis) {
         this.showname = showname;
         this.channel = channel;
         this.startDate = startDate;
@@ -47,14 +48,17 @@ public class Show {
 
     }
 
-    public Show(String showname, int logo) {
+    public Favorites(int showID, String showname, int logo) {
 
+        this.showID = showID;
         this.showname = showname;
         this.logo = logo;
 
     }
-
-
+    public int getShowID() {
+        return showID;
+    }
+    public void setShowID(int i) { showID = 1; }
     public String getShowName() {
         return showname;
     }

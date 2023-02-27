@@ -10,10 +10,10 @@ import java.util.List;
 
 public class AzureSQL {
 
-    public static List<Show> getShowDetail(String showname) {
+    public static List<Shows> getShowDetail(String showname) {
         Connection connect;
         String query = "SELECT showname, network, startDate, endDate, seasons, episodes, synopsis from ShowDetails WHERE showname=?";
-        List<Show> showList = new ArrayList<>();
+        List<Shows> showList = new ArrayList<>();
 
         AzureCon c = new AzureCon();
         connect = c.conclass();
@@ -32,7 +32,7 @@ public class AzureSQL {
                 int episodes = resultSet.getInt("episodes");
                 String synopsis = resultSet.getString("synopsis");
 
-                Show show = new Show(name, network, startDate, endDate, seasons, episodes, synopsis);
+                Shows show = new Shows(name, network, startDate, endDate, seasons, episodes, synopsis);
                 showList.add(show);
 
             }
@@ -44,10 +44,10 @@ public class AzureSQL {
         return showList;
     }
 
-    public static List<Show> getShows() {
+    public static ArrayList<Shows> getShows() {
         Connection connection;
         String query = "SELECT  FROM dbo.ShowClips";
-        List<Show> showList = new ArrayList<>();
+        ArrayList<Shows> showList = new ArrayList<>();
 
         AzureCon con = new AzureCon();
         connection = con.conclass();
@@ -57,11 +57,12 @@ public class AzureSQL {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 String name = resultSet.getString("showname");
                 int logo = resultSet.getInt("logo");
 
 
-                Show show = new Show(name, logo);
+                Shows show = new Shows(id, name, logo);
                 showList.add(show);
             }
         } catch (SQLException e) {

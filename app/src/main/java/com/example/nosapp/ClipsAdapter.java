@@ -4,19 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class FavoriteClipAdapter extends RecyclerView.Adapter {
-    private ArrayList<FavoriteClip> favoriteClipArrayList;
+public class ClipsAdapter extends RecyclerView.Adapter {
+
+    private Context pcontext;
+    private ArrayList<Favorites> favoriteClipArrayList;
     private View.OnClickListener mOnItemClickListener;
-    private Context context;
+
 
     public class FavoriteClipViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,7 +34,7 @@ public class FavoriteClipAdapter extends RecyclerView.Adapter {
         }
 
     }
-    public FavoriteClipAdapter(ArrayList<FavoriteClip> arrayList, Context context) {
+    public ClipsAdapter(ArrayList<Favorites> arrayList, Context context) {
         favoriteClipArrayList = arrayList;
         context = context;
     }
@@ -53,7 +53,7 @@ public class FavoriteClipAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         FavoriteClipViewHolder cvh = (FavoriteClipViewHolder) holder;
-        cvh.getFavoriteClipTextView().setText(favoriteClipArrayList.get(position).getclipName());
+        //cvh.getFavoriteClipTextView().setText(favoriteClipArrayList.get(position).getclipName());
 
     }
 

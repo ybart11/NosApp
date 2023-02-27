@@ -12,11 +12,12 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-public class FavoriteClipActivity extends AppCompatActivity {
+public class ClipsActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private FavoriteClipAdapter favoriteclipAdapter;
-    private ArrayList<FavoriteClip> favoriteClipArrayList;
+    RecyclerView recyclerView;
+    ClipsAdapter favoriteclipAdapter;
+    ArrayList<Favorites> favoriteClipArrayList;
+    Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,34 +29,52 @@ public class FavoriteClipActivity extends AppCompatActivity {
 
         favoriteClipArrayList = new ArrayList<>();
 
-        favoriteclipAdapter = new FavoriteClipAdapter(favoriteClipArrayList, this);
+        favoriteclipAdapter = new ClipsAdapter(favoriteClipArrayList, this);
         recyclerView.setAdapter(favoriteclipAdapter);
 
 
         backButton();
+        shareButton();
 
         randomButton();
         homeButton();
         favoritesButton();
 
-        loadClips();
+        //loadClips();
+
+        extras = getIntent().getExtras();
+
     }
 
-    private void loadClips() {
+    /*private void loadClips() {
 
-        favoriteClipArrayList.add(new FavoriteClip("Show 1", "123","456"));
+        favoriteClipArrayList.add(new Favorites("Show 1", "123","456"));
 
         favoriteclipAdapter.notifyDataSetChanged();
-    }
+    }*/
 
 
     private void backButton() {
         Button ibList = (Button) findViewById(R.id.buttonBack);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoriteClipActivity.this,FavoritesActivity.class);
+                Intent intent = new Intent(ClipsActivity.this,FavoritesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void shareButton() {
+        Button ibList = (Button) findViewById(R.id.buttonShare);
+        ibList.setOnClickListener (new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
+                        " Nostalgia App: " +
+                        "\nwww.youtube.com/watch?v=" );
+                startActivity(Intent.createChooser(shareIntent, "Share using"));
             }
         });
     }
@@ -64,7 +83,7 @@ public class FavoriteClipActivity extends AppCompatActivity {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoriteClipActivity.this,RandomActivity.class);
+                Intent intent = new Intent(ClipsActivity.this,RandomActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -74,7 +93,7 @@ public class FavoriteClipActivity extends AppCompatActivity {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoriteClipActivity.this, MainActivity.class);
+                Intent intent = new Intent(ClipsActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -85,7 +104,7 @@ public class FavoriteClipActivity extends AppCompatActivity {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoriteClipActivity.this, FavoritesActivity.class);
+                Intent intent = new Intent(ClipsActivity.this, FavoritesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

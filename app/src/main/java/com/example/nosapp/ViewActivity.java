@@ -34,7 +34,6 @@ public class ViewActivity extends AppCompatActivity {
 
         extras = getIntent().getExtras();
         displayClip(extras.getString("randomVideoString"));
-        addDetails(extras.getString("randomVideoString2"));
 
     }
 
@@ -58,7 +57,7 @@ public class ViewActivity extends AppCompatActivity {
 
     private void addDetails(String showname) {
         AzureSQL az = new AzureSQL();
-        List<Show> details = az.getShowDetail(showname);
+        List<Shows> details = az.getShowDetail(showname);
 
         if (details.isEmpty()) {
             // handle the case where there are no shows with the given name
@@ -74,7 +73,7 @@ public class ViewActivity extends AppCompatActivity {
         TextView editEpisodes = findViewById(R.id.editEpisodes);
         TextView editSynopsis = findViewById(R.id.editSynopsis);
 
-        for (Show show : details) {
+        for (Shows show : details) {
             Log.d("addDetails", "Show: " + show.getShowName() + ", " + show.getChannel() + ", " + show.getStartDate() + ", " + show.getEndDate() + ", " + show.getSeasons() + ", " + show.getEpisodes() + ", " + show.getSynopsis());
 
             editShowName.setText(show.getShowName());

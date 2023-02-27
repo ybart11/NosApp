@@ -28,7 +28,7 @@ public class AzureCon {
             String cS = "jdbc:jtds:sqlserver://" + s + ":1433;" +
                             "database=" + dB + ";" +
                             "user=" + uN + ";" +
-                            "password=" + pW + ";" + "databaseName=nosapp;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;ssl=request;";
+                            "password=" + pW + ";" + "databaseName=nosapp;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=45;ssl=request;";
             con = DriverManager.getConnection(cS);
         }
         catch(Exception e){

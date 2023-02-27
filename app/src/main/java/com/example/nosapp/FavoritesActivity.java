@@ -11,13 +11,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FavoritesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ShowAdapter showAdapter;
-    private List<Show> showList;
+    private ArrayList<Shows> showList;
 
 
     @Override
@@ -35,19 +34,19 @@ public class FavoritesActivity extends AppCompatActivity {
 
         showList = new ArrayList<>();
 
-        showAdapter = new ShowAdapter(this, showList);
+        showAdapter = new ShowAdapter(showList,this);
         recyclerView.setAdapter(showAdapter);
 
-        loadShows();
+        loadFavorites();
     }
 
-    private void loadShows() {
+    private void loadFavorites() {
 
-        showList.add(new Show("Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
-        showList.add(new Show("Show 2", R.drawable.kim_possible_logo));
-        showList.add(new Show("Show 3", R.drawable.the_fairly_oddparents_logo));
-        showList.add(new Show("Show 4", R.drawable.hannah_montana_logo));
-        showList.add(new Show("Show 5", R.drawable.courage_the_cowardly_dog_logo));
+        showList.add(new Shows(1,"Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
+        showList.add(new Shows(2,"Show 2", R.drawable.kim_possible_logo));
+        showList.add(new Shows(3,"Show 3", R.drawable.the_fairly_oddparents_logo));
+        showList.add(new Shows(4,"Show 4", R.drawable.hannah_montana_logo));
+        showList.add(new Shows(5,"Show 5", R.drawable.courage_the_cowardly_dog_logo));
 
         showAdapter.notifyDataSetChanged();
     }
@@ -56,7 +55,7 @@ public class FavoritesActivity extends AppCompatActivity {
         Button b = (Button) findViewById(R.id.buttonClips);
         b.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(FavoritesActivity.this, FavoriteClipActivity.class);
+                Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
                 startActivity(intent);
             }
         });

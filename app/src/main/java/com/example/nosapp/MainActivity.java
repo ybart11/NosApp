@@ -11,14 +11,26 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ShowAdapter showAdapter;
-    private List<Show> showList;
+    private ArrayList<Shows> showList;
     YoutubeUtil youtubeUtil;
+
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            int contactId = showList.get(position).getShowID();
+            Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+            intent.putExtra("randomVideoString",
+                    youtubeUtil.searchForRandomVideo("Rugrats"));
+            startActivity(intent);
+        }
+    };
 
 
 
@@ -28,18 +40,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewButton();
+        //viewButton();
         randomButton();
         homeButton();
         favoritesButton();
 
         recyclerView = findViewById(R.id.rvShows);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         showList = new ArrayList<>();
 
-        showAdapter = new ShowAdapter(this, showList);
+        showAdapter = new ShowAdapter(showList,this);
+        showAdapter.setOnItemClickListener(onItemClickListener);
         recyclerView.setAdapter(showAdapter);
 
         youtubeUtil = new YoutubeUtil();
@@ -52,23 +65,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadShows() {
         /*AzureSQL az = new AzureSQL();
-        List<Show> showList = az.getShows();
+        ArrayList<Show> showList = AzureSQL.getShows();
 
-        ShowAdapter adapter = new ShowAdapter(this, showList);
+        ShowAdapter adapter = new ShowAdapter( showList,this);
         recyclerView.setAdapter(adapter);*/
 
 
-        showList.add(new Show("Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
-        showList.add(new Show("Show 2", R.drawable.kim_possible_logo));
-        showList.add(new Show("Show 3", R.drawable.the_fairly_oddparents_logo));
-        showList.add(new Show("Show 4", R.drawable.hannah_montana_logo));
-        showList.add(new Show("Show 5", R.drawable.courage_the_cowardly_dog_logo));
+        showList.add(new Shows(1,"Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
+        showList.add(new Shows(2,"Show 2", R.drawable.kim_possible_logo));
+        showList.add(new Shows(3,"Show 3", R.drawable.the_fairly_oddparents_logo));
+        showList.add(new Shows(4,"Show 4", R.drawable.hannah_montana_logo));
+        showList.add(new Shows(5,"Show 5", R.drawable.courage_the_cowardly_dog_logo));
 
         showAdapter.notifyDataSetChanged();
     }
 
 
-    private void viewButton() {
+    /*private void viewButton() {
         Button ibList = (Button) findViewById(R.id.buttonView);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
@@ -85,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+    }*/
 
     private void randomButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
