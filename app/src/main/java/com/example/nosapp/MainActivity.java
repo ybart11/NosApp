@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ViewActivity.class);
             intent.putExtra("randomVideoString",
                     youtubeUtil.searchForRandomVideo("Rugrats"));
+            intent.putExtra("randomVideoString2",
+                    "Rugrats");
             startActivity(intent);
         }
     };
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //viewButton();
         randomButton();
         homeButton();
         favoritesButton();

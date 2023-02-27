@@ -13,10 +13,10 @@ public class AzureCon {
     public Connection conclass()
     {
 
-        final String s = "nostalgiaapp.database.windows.net";
-        final String dB = "nostalgiaapp";
-        final String uN = "nostalgiaapp";
-        final String pW = "BigPapa123";
+        final String s = "nosiapp.database.windows.net";
+        final String dB = "nosapp";
+        final String uN = "nosiapp";
+        final String pW = "lilpapa@123";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
