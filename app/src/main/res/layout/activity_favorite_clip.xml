@@ -73,21 +73,23 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/tv_icon" />
+            android:scaleType="center"
+            android:src="@mipmap/newrefresh_foreground" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/refresh_icon"
-            android:scaleType="fitCenter"
             android:adjustViewBounds="true"
+            android:backgroundTint="#FEFEFE"
             android:maxWidth="8dp"
-            android:maxHeight="64dp"/>
+            android:maxHeight="64dp"
+            android:scaleType="center"
+            android:src="@mipmap/newTV_foreground" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorites"
@@ -95,10 +97,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/star_icon" />
+            android:scaleType="center"
+            android:src="@mipmap/newstar_foreground" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
