@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 public class ClipsActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    ClipsAdapter favoriteclipAdapter;
-    ArrayList<Favorites> favoriteClipArrayList;
     Bundle extras;
 
     @Override
@@ -24,32 +21,16 @@ public class ClipsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_clip);
 
-        recyclerView = findViewById(R.id.rvFavoriteClips);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-
-        favoriteClipArrayList = new ArrayList<>();
-
-        favoriteclipAdapter = new ClipsAdapter(favoriteClipArrayList, this);
-        recyclerView.setAdapter(favoriteclipAdapter);
-
         shareButton();
 
         randomButton();
         homeButton();
         favoritesButton();
 
-        //loadClips();
 
         extras = getIntent().getExtras();
 
     }
-
-    /*private void loadClips() {
-
-        favoriteClipArrayList.add(new Favorites("Show 1", "123","456"));
-
-        favoriteclipAdapter.notifyDataSetChanged();
-    }*/
 
 
 
