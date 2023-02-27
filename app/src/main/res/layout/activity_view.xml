@@ -202,31 +202,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
 
-            <Button
-                android:id="@+id/buttonShare"
-                android:layout_width="62dp"
-                android:layout_height="63dp"
-                android:layout_marginTop="8dp"
+            <ImageButton
+                android:id="@+id/buttonshare"
+                android:layout_width="91dp"
+                android:layout_height="81dp"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="99dp"
                 android:layout_marginEnd="24dp"
-                app:backgroundTint="@color/blue"
-                app:icon="?attr/actionModeShareDrawable"
-                app:iconTint="@color/white"
-                app:iconTintMode="src_in"
+                android:layout_marginBottom="47dp"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonFavorite"
-                app:rippleColor="@color/white"
-                app:strokeColor="#FEFEFE" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/editEndDate"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/shareicon" />
 
-            <Button
-                android:id="@+id/buttonFavorite"
-                android:layout_width="61dp"
-                android:layout_height="63dp"
-                android:layout_marginTop="40dp"
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="91dp"
+                android:layout_height="81dp"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="24dp"
-                app:backgroundTint="@color/blue"
-                app:icon="@android:drawable/btn_star"
+                android:layout_marginBottom="2dp"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/buttonshare"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/editChannel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/favlogo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
