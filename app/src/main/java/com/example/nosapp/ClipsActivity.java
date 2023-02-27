@@ -32,8 +32,6 @@ public class ClipsActivity extends AppCompatActivity {
         favoriteclipAdapter = new ClipsAdapter(favoriteClipArrayList, this);
         recyclerView.setAdapter(favoriteclipAdapter);
 
-
-        backButton();
         shareButton();
 
         randomButton();
@@ -54,16 +52,6 @@ public class ClipsActivity extends AppCompatActivity {
     }*/
 
 
-    private void backButton() {
-        Button ibList = (Button) findViewById(R.id.buttonBack);
-        ibList.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(ClipsActivity.this,FavoritesActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
 
     private void shareButton() {
         Button ibList = (Button) findViewById(R.id.buttonShare);

@@ -15,8 +15,19 @@ import java.util.ArrayList;
 public class FavoritesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ShowAdapter showAdapter;
-    private ArrayList<Shows> showList;
+    private FavoritesAdapter favsAdapter;
+    private ArrayList<Favorites> favsList;
+
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            int contactId = favsList.get(position).getShowID();
+            Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
+            startActivity(intent);
+        }
+    };
 
 
     @Override
@@ -24,7 +35,6 @@ public class FavoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        clipsButton();
         randomButton();
         homeButton();
         favoritesButton();
@@ -32,33 +42,24 @@ public class FavoritesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvFavorites);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
-        showList = new ArrayList<>();
+        favsList = new ArrayList<>();
 
-        showAdapter = new ShowAdapter(showList,this);
-        recyclerView.setAdapter(showAdapter);
+        favsAdapter = new FavoritesAdapter(favsList,this);
+        favsAdapter.setOnItemClickListener(onItemClickListener);
+        recyclerView.setAdapter(favsAdapter);
 
         loadFavorites();
     }
 
     private void loadFavorites() {
 
-        showList.add(new Shows(1,"Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
-        showList.add(new Shows(2,"Show 2", R.drawable.kim_possible_logo));
-        showList.add(new Shows(3,"Show 3", R.drawable.the_fairly_oddparents_logo));
-        showList.add(new Shows(4,"Show 4", R.drawable.hannah_montana_logo));
-        showList.add(new Shows(5,"Show 5", R.drawable.courage_the_cowardly_dog_logo));
+        favsList.add(new Favorites(1,"Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
+        favsList.add(new Favorites(2,"Show 2", R.drawable.kim_possible_logo));
+        favsList.add(new Favorites(3,"Show 3", R.drawable.the_fairly_oddparents_logo));
+        favsList.add(new Favorites(4,"Show 4", R.drawable.hannah_montana_logo));
+        favsList.add(new Favorites(5,"Show 5", R.drawable.courage_the_cowardly_dog_logo));
 
-        showAdapter.notifyDataSetChanged();
-    }
-
-    private void clipsButton() {
-        Button b = (Button) findViewById(R.id.buttonClips);
-        b.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
-                startActivity(intent);
-            }
-        });
+        favsAdapter.notifyDataSetChanged();
     }
 
     private void settingsButton() {

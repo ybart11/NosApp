@@ -3,7 +3,7 @@ package com.example.nosapp;
 import java.util.Date;
 
 public class Favorites {
-    private int showID;
+    private int favsID;
     private String showname;
     private String channel;
     private String type;
@@ -48,17 +48,17 @@ public class Favorites {
 
     }
 
-    public Favorites(int showID, String showname, int logo) {
+    public Favorites(int favsID, String showname, int logo) {
 
-        this.showID = showID;
+        this.favsID = favsID;
         this.showname = showname;
         this.logo = logo;
 
     }
     public int getShowID() {
-        return showID;
+        return favsID;
     }
-    public void setShowID(int i) { showID = 1; }
+    public void setShowID(int i) { favsID = 1; }
     public String getShowName() {
         return showname;
     }
