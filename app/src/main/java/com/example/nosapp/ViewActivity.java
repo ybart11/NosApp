@@ -91,7 +91,7 @@ public class ViewActivity extends AppCompatActivity {
 
 
     private void shareButton() {
-        Button ibList = (Button) findViewById(R.id.buttonShare);
+        ImageButton ibList = findViewById(R.id.buttonshare);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
