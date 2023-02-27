@@ -64,8 +64,8 @@
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
-            android:scaleType="center"
-            android:src="@mipmap/newrefresh_foreground" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/newrefresh" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
@@ -76,8 +76,8 @@
             android:backgroundTint="#FEFEFE"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
-            android:scaleType="center"
-            android:src="@mipmap/newTV_foreground" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/tv" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorites"
@@ -88,8 +88,8 @@
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
-            android:scaleType="center"
-            android:src="@mipmap/newstar_foreground" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/star" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
