@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    // the following are colors for main apps
+    <color name="pink">#FFDAE1</color>
+    <color name="lav">#D6C6FF</color>
+    <color name="orange">#FFC2AA</color>
+    <color name="yellow">#FCE4AB</color>
+    <color name="hotpink">#C68EAB</color>
+    <color name="blue">#A1E5FB</color>
+    <color name="green">#B5FD87</color>
+    
 </resources>

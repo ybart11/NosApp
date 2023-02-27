@@ -38,9 +38,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clip Title:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -50,8 +52,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -64,6 +68,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,6 +82,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Channel:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textShowName" />
 
@@ -84,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textChannel" />
 
@@ -94,6 +103,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Started:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textChannel" />
 
@@ -103,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textStartDate" />
 
@@ -113,6 +124,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Ended:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textStartDate" />
 
@@ -122,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textEndDate" />
 
@@ -132,6 +145,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Seasons"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textEndDate" />
 
@@ -141,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textSeasons" />
 
@@ -151,6 +166,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Total Episodes:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSeasons" />
 
@@ -160,6 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textEpisodes" />
 
@@ -170,6 +187,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Synopsis:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textEpisodes" />
 
@@ -180,26 +198,33 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
 
             <Button
                 android:id="@+id/buttonShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Share"
+                android:layout_width="62dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                app:backgroundTint="@color/blue"
+                app:icon="?attr/actionModeShareDrawable"
+                app:iconTint="@color/white"
+                app:iconTintMode="src_in"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonFavorite" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonFavorite"
+                app:rippleColor="@color/white"
+                app:strokeColor="#FEFEFE" />
 
             <Button
                 android:id="@+id/buttonFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:text="Favorite"
+                android:layout_width="61dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                app:backgroundTint="@color/blue"
+                app:icon="@android:drawable/btn_star"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -253,6 +278,19 @@
             android:src="@drawable/star" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="398dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="2dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/youtube_player_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/squiggledesign" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
