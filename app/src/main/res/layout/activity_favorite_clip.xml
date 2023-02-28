@@ -67,7 +67,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/newrefresh" />
+            android:src="@drawable/refreshnav" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
@@ -79,19 +79,19 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/tv" />
+            android:src="@drawable/tvnav" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorites"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="88dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/star" />
+            android:src="@drawable/listnav" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

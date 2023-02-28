@@ -15,43 +15,75 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="499dp"
+            android:layout_height="428dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/tvpink"
+            tools:layout_editor_absoluteX="-44dp"
+            tools:layout_editor_absoluteY="-6dp" />
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/youtube_player_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="356dp"
+            android:layout_height="185dp"
+            tools:layout_editor_absoluteX="27dp"
+            tools:layout_editor_absoluteY="135dp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/youtube_player_view">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="426dp"
+            android:layout_height="30dp"
+            tools:layout_editor_absoluteX="-8dp"
+            tools:layout_editor_absoluteY="388dp">
 
-        <TextView
-            android:id="@+id/textClipTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clip Title:"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:id="@+id/textClipTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Clip Title:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/buttonshare"
+            android:layout_width="179dp"
+            android:layout_height="70dp"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/gradientshare"
+            tools:layout_editor_absoluteX="206dp"
+            tools:layout_editor_absoluteY="418dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="179dp"
+            android:layout_height="70dp"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/gradientstar"
+            tools:layout_editor_absoluteX="27dp"
+            tools:layout_editor_absoluteY="418dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="418dp"
+        android:layout_height="144dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -64,6 +96,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,6 +110,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Channel:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textShowName" />
 
@@ -84,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textChannel" />
 
@@ -94,6 +131,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Started:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textChannel" />
 
@@ -103,6 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textStartDate" />
 
@@ -113,6 +152,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Ended:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textStartDate" />
 
@@ -122,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textEndDate" />
 
@@ -132,6 +173,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Seasons"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textEndDate" />
 
@@ -141,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textSeasons" />
 
@@ -151,6 +194,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Total Episodes:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSeasons" />
 
@@ -160,6 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textEpisodes" />
 
@@ -170,6 +215,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Synopsis:"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textEpisodes" />
 
@@ -178,30 +224,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:text="TextView"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
-
-            <Button
-                android:id="@+id/buttonShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Share"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonFavorite" />
-
-            <Button
-                android:id="@+id/buttonFavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:text="Favorite"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -226,7 +253,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/newrefresh" />
+            android:src="@drawable/refreshnav" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
@@ -238,21 +265,20 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/tv" />
+            android:src="@drawable/tvnav" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorites"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="88dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/star" />
+            android:src="@drawable/listnav" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
