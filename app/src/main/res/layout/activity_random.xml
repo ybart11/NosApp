@@ -17,84 +17,82 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="499dp"
-            android:layout_height="428dp"
+            android:layout_width="557dp"
+            android:layout_height="376dp"
+            android:layout_marginTop="4dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/tvpink"
-            tools:layout_editor_absoluteX="-44dp"
-            tools:layout_editor_absoluteY="-6dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/tvpink" />
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/youtube_player_view"
             android:layout_width="356dp"
             android:layout_height="185dp"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="135dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.643">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="426dp"
-            android:layout_height="30dp"
-            tools:layout_editor_absoluteX="-8dp"
-            tools:layout_editor_absoluteY="388dp">
-
-            <TextView
-                android:id="@+id/textClipTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Clip Title:"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageButton
-            android:id="@+id/buttonshare"
-            android:layout_width="179dp"
-            android:layout_height="70dp"
-            android:background="@color/white"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/gradientshare"
-            tools:layout_editor_absoluteX="206dp"
-            tools:layout_editor_absoluteY="418dp" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="179dp"
-            android:layout_height="70dp"
-            android:background="@color/white"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/gradientstar"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="418dp" />
+        </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="418dp"
-        android:layout_height="144dp"
+        android:layout_width="413dp"
+        android:layout_height="281dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.031">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="179dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="288dp"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/gradientstar" />
+
+            <ImageButton
+                android:id="@+id/buttonshare"
+                android:layout_width="179dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/gradientshare" />
 
             <TextView
                 android:id="@+id/textShowName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="140dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -102,13 +100,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
                 android:id="@+id/textChannel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:text="Channel:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Started:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Ended:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -171,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Seasons"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -192,7 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:text="Total Episodes:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -213,7 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Synopsis:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -224,11 +221,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="426dp"
+                android:layout_height="30dp"
+                tools:layout_editor_absoluteX="-7dp"
+                tools:layout_editor_absoluteY="16dp">
+
+                <TextView
+                    android:id="@+id/textClipTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Clip Title:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -254,6 +271,7 @@
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
             android:src="@drawable/refreshnav" />
+
 
         <ImageButton
             android:id="@+id/imageButtonHome"
