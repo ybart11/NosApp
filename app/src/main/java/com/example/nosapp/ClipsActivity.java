@@ -35,7 +35,7 @@ public class ClipsActivity extends AppCompatActivity {
 
 
     private void shareButton() {
-        Button ibList = (Button) findViewById(R.id.buttonShare);
+        ImageButton ibList = findViewById(R.id.ibShare);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -49,7 +49,7 @@ public class ClipsActivity extends AppCompatActivity {
     }
 
     private void randomButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
+        ImageButton ibList = findViewById(R.id.ibRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(ClipsActivity.this,RandomActivity.class);
@@ -59,7 +59,7 @@ public class ClipsActivity extends AppCompatActivity {
         });
     }
     private void homeButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
+        ImageButton ibList = findViewById(R.id.ibHome);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(ClipsActivity.this, MainActivity.class);
@@ -70,7 +70,7 @@ public class ClipsActivity extends AppCompatActivity {
     }
 
     private void favoritesButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
+        ImageButton ibList = findViewById(R.id.ibFavorites);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(ClipsActivity.this, FavoritesActivity.class);

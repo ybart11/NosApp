@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/shareButton"
+            android:id="@+id/ibShare"
             android:layout_width="162dp"
             android:layout_height="65dp"
             android:background="@color/white"
@@ -29,7 +29,7 @@
             app:srcCompat="@drawable/gradientshare" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/ibSettings"
             android:layout_width="166dp"
             android:layout_height="66dp"
             android:background="@color/white"
@@ -67,7 +67,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButtonRandom"
+            android:id="@+id/ibRandom"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -79,7 +79,7 @@
             android:src="@drawable/refreshnav" />
 
         <ImageButton
-            android:id="@+id/imageButtonHome"
+            android:id="@+id/ibHome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -91,7 +91,7 @@
             android:src="@drawable/tvnav" />
 
         <ImageButton
-            android:id="@+id/imageButtonFavorites"
+            android:id="@+id/ibFavorites"
             android:layout_width="wrap_content"
             android:layout_height="88dp"
             android:layout_weight="1"
