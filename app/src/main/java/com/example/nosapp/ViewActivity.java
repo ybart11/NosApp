@@ -86,6 +86,15 @@ public class ViewActivity extends AppCompatActivity {
             editSynopsis.setText(show.getSynopsis());
         }
     }
+    private void favoriteButton(String videoID){
+        ImageButton ibList = findViewById(R.id.imageButton2);
+        ibList.setOnClickListener (new View.OnClickListener() {
+            public void onClick(View view) {
+
+            }
+        });
+
+    }
 
 
 

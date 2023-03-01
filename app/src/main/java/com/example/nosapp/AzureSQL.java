@@ -10,6 +10,45 @@ import java.util.List;
 
 public class AzureSQL {
 
+    public static String addFavorite(String videoId,int showId){
+        Connection connect;
+        String query = "Insert into Favorites(videoID, showID) Values(?,?)";
+        AzureCon c = new AzureCon();
+        connect = c.conclass();
+
+        try (
+                PreparedStatement statement = connect.prepareStatement(query)) {
+            statement.setString(1, videoId);
+            statement.setInt(2, showId);
+            statement.executeQuery();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return "Favorite added successfully";
+    }
+
+    public static String deleteFavorite(String videoId) {
+        Connection connect;
+        String query = "DELETE FROM Favorites WHERE id=?";
+        AzureCon c = new AzureCon();
+        connect = c.conclass();
+
+        try (
+                PreparedStatement statement = connect.prepareStatement(query)) {
+            statement.setString(1, videoId);
+            statement.executeQuery();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return "Favorite deleted successfully";
+    }
+
     public static List<Shows> getShowDetail(String showname) {
         Connection connect;
         String query = "SELECT showname, network, startDate, endDate, seasons, episodes, synopsis from ShowDetails WHERE showname=?";
@@ -36,6 +75,7 @@ public class AzureSQL {
                 showList.add(show);
 
             }
+            connect.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,15 +85,15 @@ public class AzureSQL {
     }
 
     public static ArrayList<Shows> getShows() {
-        Connection connection;
+        Connection connect;
         String query = "SELECT  FROM dbo.ShowClips";
         ArrayList<Shows> showList = new ArrayList<>();
 
         AzureCon con = new AzureCon();
-        connection = con.conclass();
+        connect = con.conclass();
 
         try (
-             PreparedStatement statement = connection.prepareStatement(query)) {
+             PreparedStatement statement = connect.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -65,6 +105,7 @@ public class AzureSQL {
                 Shows show = new Shows(id, name, logo);
                 showList.add(show);
             }
+            connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
