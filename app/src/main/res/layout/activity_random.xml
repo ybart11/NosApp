@@ -36,7 +36,7 @@
             app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.643">
+            app:layout_constraintVertical_bias="0.628">
 
         </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
@@ -44,59 +44,27 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="413dp"
-        android:layout_height="281dp"
+        android:layout_width="463dp"
+        android:layout_height="261dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="0.031">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="179dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="4dp"
-                android:background="@color/white"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/buttonshare"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editChannel"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/gradientstar" />
-
-            <ImageButton
-                android:id="@+id/buttonshare"
-                android:layout_width="179dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="131dp"
-                android:background="@color/white"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editStartDate"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-                app:srcCompat="@drawable/gradientshare" />
-
             <TextView
                 android:id="@+id/textShowName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="76dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -108,8 +76,8 @@
                 android:id="@+id/textChannel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
                 android:text="Channel:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +87,7 @@
                 android:id="@+id/editChannel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="128dp"
+                android:layout_marginStart="104dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -129,8 +97,8 @@
                 android:id="@+id/textStartDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="12dp"
                 android:text="Started:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,7 +108,7 @@
                 android:id="@+id/editStartDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="128dp"
+                android:layout_marginStart="104dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,8 +118,8 @@
                 android:id="@+id/textEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
                 android:text="Ended:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -161,19 +129,22 @@
                 android:id="@+id/editEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="128dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="302dp"
                 android:text="TextView"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textEndDate" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textEndDate"
+                app:layout_constraintTop_toBottomOf="@+id/editStartDate" />
 
             <TextView
                 android:id="@+id/textSeasons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Seasons"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:text="Seasons:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textEndDate" />
@@ -182,20 +153,27 @@
                 android:id="@+id/editSeasons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="128dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="302dp"
+                android:layout_marginBottom="12dp"
                 android:text="TextView"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textSeasons" />
+                app:layout_constraintBottom_toTopOf="@+id/textEpisodes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textSeasons"
+                app:layout_constraintTop_toBottomOf="@+id/editEndDate" />
 
             <TextView
                 android:id="@+id/textEpisodes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="12dp"
                 android:text="Total Episodes:"
                 android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/editEpisodes"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSeasons" />
 
@@ -203,7 +181,7 @@
                 android:id="@+id/editEpisodes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="128dp"
+                android:layout_marginStart="144dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -213,8 +191,8 @@
                 android:id="@+id/textSynopsis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
                 android:text="Synopsis:"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -224,12 +202,32 @@
                 android:id="@+id/editSynopsis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
+
+            <ToggleButton
+                android:id="@+id/toggleHeart"
+                android:layout_width="66dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="58dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="220dp"
+                android:layout_marginBottom="156dp"
+                android:background="@drawable/toggle_selector"
+                android:onClick="onDefaultToggleClickRan"
+                android:text="ToggleButton"
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintBottom_toTopOf="@+id/editEpisodes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textShowName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class RandomActivity extends AppCompatActivity {
 
@@ -49,5 +50,8 @@ public class RandomActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void onDefaultToggleClickRan(View view) {
+        Toast.makeText(this,"DefaultToggle",Toast.LENGTH_SHORT).show();
     }
 }

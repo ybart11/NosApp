@@ -28,7 +28,7 @@ public class ViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        shareButton();
+        //shareButton();
         randomButton();
         homeButton();
         favoritesButton();
@@ -83,7 +83,7 @@ public class ViewActivity extends AppCompatActivity {
             editSynopsis.setText(show.getSynopsis());
         }
     }
-    private void favoriteButton(String videoID){
+    /*private void favoriteButton(String videoID){
         ImageButton ibList = findViewById(R.id.imageButton2);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
@@ -96,7 +96,7 @@ public class ViewActivity extends AppCompatActivity {
 
 
 
-    private void shareButton() {
+   /* private void shareButton() {
         ImageButton ibList = findViewById(R.id.buttonshare);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
@@ -110,6 +110,8 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
     }
+    */
+
 
     private void randomButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
