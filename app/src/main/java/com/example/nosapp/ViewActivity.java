@@ -50,10 +50,6 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
 
-        TextView titleTextView = findViewById(R.id.textClipTitle);
-
-        youtubeUtil = new YoutubeUtil(titleTextView);
-        youtubeUtil.execute(videoId);
     }
 
     private void addDetails(String showname) {
