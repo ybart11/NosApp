@@ -59,27 +59,10 @@
 
 
             <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="179dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="4dp"
-                android:background="@color/white"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/buttonshare"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editChannel"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/gradientstar" />
-
-            <ImageButton
                 android:id="@+id/buttonshare"
                 android:layout_width="179dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="33dp"
-                android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="131dp"
                 android:background="@color/white"
@@ -87,7 +70,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/editStartDate"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton2"
                 app:srcCompat="@drawable/gradientshare" />
 
             <TextView
@@ -229,6 +211,21 @@
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
+
+            <ToggleButton
+                android:id="@+id/toggleHeart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="47dp"
+                android:layout_marginEnd="65dp"
+                android:layout_marginBottom="19dp"
+                android:text="ToggleButton"
+                app:layout_constraintBottom_toTopOf="@+id/buttonshare"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editChannel"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="onDefaultToggleClick"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -143,4 +144,7 @@ public class ViewActivity extends AppCompatActivity {
     }
 
 
+    public void onDefaultToggleClick(View view) {
+        Toast.makeText(this,"DefaultToggle",Toast.LENGTH_SHORT).show();
+    }
 }
