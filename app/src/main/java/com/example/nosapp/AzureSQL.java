@@ -10,7 +10,66 @@ import java.util.List;
 
 public class AzureSQL {
 
-    public static String addFavorite(String videoId,int showId){
+    public static ArrayList<Favorites> getFavorites() {
+        Connection connect;
+        String query = "SELECT logo FROM Favorites";
+        ArrayList<Favorites> favsList = new ArrayList<>();
+
+        AzureCon con = new AzureCon();
+        connect = con.conclass();
+
+        try (
+                PreparedStatement statement = connect.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int logo = resultSet.getInt("logo");
+
+
+                Favorites favs = new Favorites();
+                favsList.add(favs);
+            }
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return favsList;
+    }
+
+    public static ArrayList<Favorites> getClips(String showname) {
+        Connection connect;
+        String query = "SELECT videoId FROM Favorites where showname =?";
+        ArrayList<Favorites> clipList = new ArrayList<>();
+
+        AzureCon con = new AzureCon();
+        connect = con.conclass();
+
+        try (
+                PreparedStatement statement = connect.prepareStatement(query)) {
+            statement.setString(1, showname);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("showname");
+                int logo = resultSet.getInt("logo");
+
+
+                Favorites favs = new Favorites();
+                clipList.add(favs);
+            }
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return clipList;
+    }
+
+
+
+    public static void addFavorite(String videoId,String showname){
         Connection connect;
         String query = "Insert into Favorites(videoID, showID) Values(?,?)";
         AzureCon c = new AzureCon();
@@ -19,7 +78,7 @@ public class AzureSQL {
         try (
                 PreparedStatement statement = connect.prepareStatement(query)) {
             statement.setString(1, videoId);
-            statement.setInt(2, showId);
+            statement.setString(2, showname);
             statement.executeQuery();
             connect.close();
         } catch (SQLException e) {
@@ -27,10 +86,10 @@ public class AzureSQL {
         }
 
 
-        return "Favorite added successfully";
+
     }
 
-    public static String deleteFavorite(String videoId) {
+    public static void deleteFavorite(String videoId) {
         Connection connect;
         String query = "DELETE FROM Favorites WHERE id=?";
         AzureCon c = new AzureCon();
@@ -44,15 +103,12 @@ public class AzureSQL {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-        return "Favorite deleted successfully";
     }
 
-    public static List<Shows> getShowDetail(String showname) {
+    public static ArrayList<Shows> getShowDetail(String showname) {
         Connection connect;
-        String query = "SELECT showname, network, startDate, endDate, seasons, episodes, synopsis from ShowDetails WHERE showname=?";
-        List<Shows> showList = new ArrayList<>();
+        String query = "SELECT showname, network, startDate, endDate, seasons, episodes, synopsis from Shows WHERE showname=?";
+        ArrayList<Shows> details = new ArrayList<>();
 
         AzureCon c = new AzureCon();
         connect = c.conclass();
@@ -72,7 +128,7 @@ public class AzureSQL {
                 String synopsis = resultSet.getString("synopsis");
 
                 Shows show = new Shows(name, network, startDate, endDate, seasons, episodes, synopsis);
-                showList.add(show);
+                details.add(show);
 
             }
             connect.close();
@@ -81,12 +137,12 @@ public class AzureSQL {
             e.printStackTrace();
         }
 
-        return showList;
+        return details;
     }
 
     public static ArrayList<Shows> getShows() {
         Connection connect;
-        String query = "SELECT  FROM dbo.ShowClips";
+        String query = "SELECT  FROM Shows";
         ArrayList<Shows> showList = new ArrayList<>();
 
         AzureCon con = new AzureCon();
