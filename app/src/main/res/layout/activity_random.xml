@@ -63,28 +63,32 @@
                 android:id="@+id/imageButton2"
                 android:layout_width="179dp"
                 android:layout_height="70dp"
-                android:layout_marginBottom="56dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/editChannel"
+                app:layout_constraintBottom_toTopOf="@+id/buttonshare"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.931"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editChannel"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/gradientstar" />
 
             <ImageButton
                 android:id="@+id/buttonshare"
                 android:layout_width="179dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="131dp"
                 android:background="@color/white"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.111"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/editStartDate"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton2"
                 app:srcCompat="@drawable/gradientshare" />
 
             <TextView
@@ -92,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -226,30 +230,6 @@
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textSynopsis" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="426dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="3dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageButton2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/textClipTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="Clip Title:"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
