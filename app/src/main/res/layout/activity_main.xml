@@ -9,38 +9,43 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="406dp"
+        android:layout_height="167dp"
+        app:layout_constraintBottom_toTopOf="@+id/rvShows"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="205dp"
-            android:layout_height="143dp"
+            android:layout_width="160dp"
+            android:layout_height="206dp"
             android:adjustViewBounds="true"
             android:maxWidth="128dp"
             android:maxHeight="128dp"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.037"
             app:srcCompat="@drawable/logo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvShows"
-        android:layout_width="399dp"
-        android:layout_height="497dp"
+        android:layout_width="408dp"
+        android:layout_height="494dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
