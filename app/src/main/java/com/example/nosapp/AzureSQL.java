@@ -75,6 +75,7 @@ public class AzureSQL {
         AzureCon c = new AzureCon();
         connect = c.conclass();
 
+
         try (
                 PreparedStatement statement = connect.prepareStatement(query)) {
             statement.setString(1, videoId);
@@ -142,7 +143,7 @@ public class AzureSQL {
 
     public static ArrayList<Shows> getShows() {
         Connection connect;
-        String query = "SELECT  FROM Shows";
+        String query = "SELECT showname, logo FROM Shows";
         ArrayList<Shows> showList = new ArrayList<>();
 
         AzureCon con = new AzureCon();
@@ -153,9 +154,9 @@ public class AzureSQL {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                int id = resultSet.getInt("showID");
                 String name = resultSet.getString("showname");
-                int logo = resultSet.getInt("logo");
+                String logo = resultSet.getString("logo");
 
 
                 Shows show = new Shows(id, name, logo);

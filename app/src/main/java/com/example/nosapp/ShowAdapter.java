@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +55,13 @@ public class ShowAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ShowViewHolder svh = (ShowViewHolder) holder;
         Shows show = showList.get(position);
-        svh.getLogoImageview().setImageResource(show.getLogo());
+
+//        int resourceId = getResources().getIdentifier(show.getLogo(), "drawable",
+//                getPackageName();
+
+//        svh.getLogoImageview().setImageResource(resourceId);
+
+
 
     }
 

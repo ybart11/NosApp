@@ -41,7 +41,6 @@ public class ViewActivity extends AppCompatActivity {
 
         extras = getIntent().getExtras();
         displayClip(extras.getString("randomVideoString"));
-        addDetails(extras.getString("randomVideoString2"));
 
     }
 

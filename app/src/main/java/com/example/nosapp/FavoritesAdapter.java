@@ -55,6 +55,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
         FavoritesAdapter.FavoritesViewHolder fvh = (FavoritesViewHolder) holder;
         Favorites favorites = favoritesList.get(position);
         fvh.getLogoImageview().setImageResource(favorites.getLogo());
+
     }
 
     @Override

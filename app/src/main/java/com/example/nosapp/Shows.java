@@ -12,7 +12,7 @@ public class Shows {
     private int seasons;
     private int episodes;
     private String synopsis;
-    private int logo;
+    private String logo;
 
     public Shows() {
 
@@ -21,7 +21,7 @@ public class Shows {
 
     public Shows(String showname, String channel, String type,
                  Date startDate, Date endDate, int seasons,
-                 int episodes, String synopsis, int logo) {
+                 int episodes, String synopsis, String logo) {
 
         this.showname = showname;
         this.channel = channel;
@@ -48,7 +48,7 @@ public class Shows {
 
     }
 
-    public Shows(int showID, String showname, int logo) {
+    public Shows(int showID, String showname, String logo) {
 
         this.showID = showID;
         this.showname = showname;
@@ -97,8 +97,8 @@ public class Shows {
     public void setSynopsis(String i) {
         synopsis = i;
     }
-    public int getLogo() {
+    public String getLogo() {
         return logo;
     }
-    public void setLogo(int i) { logo= 1; }
+    public void setLogo(String i) { logo = i; }
 }
