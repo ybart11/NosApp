@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -18,10 +20,14 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 import java.util.List;
 
+import kotlin.OverloadResolutionByLambdaReturnType;
+
 public class ViewActivity extends AppCompatActivity {
     YouTubePlayerView youTubePlayerView;
     Bundle extras;
     YoutubeUtil youtubeUtil;
+    AzureSQL azureSQL;
+    Shows shows;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +153,17 @@ public class ViewActivity extends AppCompatActivity {
 
 
     public void onDefaultToggleClick(View view) {
-        Toast.makeText(this,"DefaultToggle",Toast.LENGTH_SHORT).show();
+        final ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
+        editToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String showname = shows.getShowName();
+                if (isChecked) {
+                    azureSQL.addFavorite(youtubeUtil.searchForRandomVideo(showname), shows.getShowName());
+                } else {
+                    azureSQL.deleteFavorite((youtubeUtil.searchForRandomVideo(showname)));
+                }
+            }
+        });
     }
-}
+    }
