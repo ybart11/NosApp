@@ -44,7 +44,7 @@ public class ViewActivity extends AppCompatActivity {
 
     }
 
-    private void displayClip (String videoId) {
+    private void displayClip(String videoId) {
 
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
@@ -120,17 +120,18 @@ public class ViewActivity extends AppCompatActivity {
 
     private void randomButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
-        ibList.setOnClickListener (new View.OnClickListener() {
+        ibList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(ViewActivity.this,RandomActivity.class);
+                Intent intent = new Intent(ViewActivity.this, RandomActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
     }
+
     private void homeButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
-        ibList.setOnClickListener (new View.OnClickListener() {
+        ibList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(ViewActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -141,7 +142,7 @@ public class ViewActivity extends AppCompatActivity {
 
     private void favoritesButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
-        ibList.setOnClickListener (new View.OnClickListener() {
+        ibList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(ViewActivity.this, FavoritesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -165,4 +166,4 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
     }
-    }
+}
