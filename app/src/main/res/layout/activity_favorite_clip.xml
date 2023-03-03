@@ -46,16 +46,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavoriteClips"
-        android:layout_width="398dp"
-        android:layout_height="656dp"
+        android:layout_width="414dp"
+        android:layout_height="528dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

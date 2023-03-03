@@ -2,6 +2,7 @@ package com.example.nosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -15,11 +16,23 @@ import java.util.ArrayList;
 public class ClipsActivity extends AppCompatActivity {
 
     Bundle extras;
+    FavClipsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_clip);
+
+        RecyclerView recyclerView = findViewById(R.id.rvFavoriteClips);
+        recyclerView.setHasFixedSize(true);
+
+        String[] spongebobVids = {"10NMes-uexQ", "-FjFrAmrIX8", "lrZS8LvX1EE", "jg53WYCPCjI",
+                "gPxtOu7GKFE", "m5uayeTCYJQ"};
+
+        adapter = new FavClipsAdapter(spongebobVids, this.getLifecycle());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapter);
 
         shareButton();
 

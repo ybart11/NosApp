@@ -102,7 +102,6 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
         }
     }
 
-    //
     String searchForVideoInPlaylist(String playlistId) {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
