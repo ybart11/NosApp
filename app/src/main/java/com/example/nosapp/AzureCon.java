@@ -13,9 +13,9 @@ public class AzureCon {
     public Connection conclass()
     {
 
-        final String s = "nosiapp.database.windows.net";
+        final String s = "lilpapa.database.windows.net";
         final String dB = "nosapp";
-        final String uN = "nosiapp";
+        final String uN = "BigPapa";
         final String pW = "lilpapa@123";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
