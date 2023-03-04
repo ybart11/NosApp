@@ -2,20 +2,20 @@
     <string name="app_name">NosApp</string>
 
     <string-array name="show_names_full_text">
-        <item>The Adventures of Jimmy Neutron Boy Genius</item>
+        <item>The Adventures of Jimmy Neutron, Boy Genius</item>
         <item>Kim Possible</item>
-        <item>The Fairly Oddparents</item>
+        <item>The Fairly OddParents</item>
         <item>Hannah Montana</item>
-        <item>Courage the Cowardly Dog</item>
+        <item>Courage The Coward Dog</item>
         <item>Ben 10</item>
-        <item>Drake and Josh</item>
-        <item>Icarly</item>
-        <item>Neds Declassified School Survival Guide</item>
+        <item>Drake &amp; Josh</item>
+        <item>iCarly</item>
+        <item>Ned\'s Declassified School Survival Guide</item>
         <item>Rugrats</item>
         <item>Spongebob Squarepants</item>
         <item>That\'s So Raven</item>
-        <item>Powerpuff Girls</item>
-        <item>The Suite Life of Zack and Cody</item>
+        <item>The Powerpuff Girls</item>
+        <item>The Suite Life of Zack &amp; Cody</item>
         <item>The Wild Thornberrys</item>
         <item>Zoey 101</item>
         <item>Danny Phantom</item>
