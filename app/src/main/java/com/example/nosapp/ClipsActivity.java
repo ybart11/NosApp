@@ -38,7 +38,7 @@ public class ClipsActivity extends AppCompatActivity {
         randomButton();
         homeButton();
         favoritesButton();
-
+        settingsButton();
 
         extras = getIntent().getExtras();
 
@@ -59,7 +59,17 @@ public class ClipsActivity extends AppCompatActivity {
             }
         });
     }
+    private void settingsButton() {
+        ImageButton ibSettings = findViewById(R.id.ibSettings);
+        ibSettings.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                SettingsDialogFragment dialogFragment = new SettingsDialogFragment();
+                dialogFragment.show(getSupportFragmentManager(), "SettingsDialogFragment");
+            }
+        });
+    }
     private void randomButton() {
         ImageButton ibList = findViewById(R.id.ibRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
