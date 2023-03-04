@@ -18,6 +18,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kotlin.OverloadResolutionByLambdaReturnType;
@@ -46,6 +47,7 @@ public class ViewActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" video" ,
                 Toast.LENGTH_LONG).show();
+        addDetails(extras.getString("showname"));
 
 
     }
@@ -66,7 +68,7 @@ public class ViewActivity extends AppCompatActivity {
 
     private void addDetails(String showname) {
         AzureSQL az = new AzureSQL();
-        List<Shows> details = az.getShowDetail(showname);
+        ArrayList<Shows> details = az.getShowDetail(showname);
 
         if (details.isEmpty()) {
             // handle the case where there are no shows with the given name
@@ -81,6 +83,8 @@ public class ViewActivity extends AppCompatActivity {
         TextView editSeasons = findViewById(R.id.editSeasons);
         TextView editEpisodes = findViewById(R.id.editEpisodes);
         TextView editSynopsis = findViewById(R.id.editSynopsis);
+
+
 
         for (Shows show : details) {
             Log.d("addDetails", "Show: " + show.getShowName() + ", " + show.getChannel() + ", " + show.getStartDate() + ", " + show.getEndDate() + ", " + show.getSeasons() + ", " + show.getEpisodes() + ", " + show.getSynopsis());

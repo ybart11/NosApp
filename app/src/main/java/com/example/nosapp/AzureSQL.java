@@ -108,7 +108,7 @@ public class AzureSQL {
 
     public static ArrayList<Shows> getShowDetail(String showname) {
         Connection connect;
-        String query = "SELECT showname, network, startDate, endDate, seasons, episodes, synopsis from Shows WHERE showname=?";
+        String query = "SELECT showname, channel, startDate, endDate, seasons, episodes, synopsis from Shows WHERE showname=?";
         ArrayList<Shows> details = new ArrayList<>();
 
         AzureCon c = new AzureCon();
@@ -121,14 +121,14 @@ public class AzureSQL {
 
             while (resultSet.next()) {
                 String name = resultSet.getString("showname");
-                String network = resultSet.getString("network");
+                String channel = resultSet.getString("channel");
                 Date startDate = resultSet.getDate("startDate");
                 Date endDate = resultSet.getDate("endDate");
                 int seasons = resultSet.getInt("seasons");
                 int episodes = resultSet.getInt("episodes");
                 String synopsis = resultSet.getString("synopsis");
 
-                Shows show = new Shows(name, network, startDate, endDate, seasons, episodes, synopsis);
+                Shows show = new Shows(name, channel, startDate, endDate, seasons, episodes, synopsis);
                 details.add(show);
 
             }
