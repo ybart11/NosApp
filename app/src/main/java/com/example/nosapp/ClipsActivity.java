@@ -26,10 +26,9 @@ public class ClipsActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvFavoriteClips);
         recyclerView.setHasFixedSize(true);
 
-        String[] spongebobVids = {"10NMes-uexQ", "-FjFrAmrIX8", "lrZS8LvX1EE", "jg53WYCPCjI",
-                "gPxtOu7GKFE", "m5uayeTCYJQ"};
+        String[] videoIds = {};
 
-        adapter = new FavClipsAdapter(spongebobVids, this.getLifecycle());
+        adapter = new FavClipsAdapter(videoIds, this.getLifecycle());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
