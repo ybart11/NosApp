@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.037"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/noslogo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -51,6 +51,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +67,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/refreshnav" />
+            android:src="@drawable/refreshicon2" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
@@ -78,7 +79,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/tvnav" />
+            android:src="@drawable/tvicon2" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorites"
@@ -90,7 +91,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/listnav" />
+            android:src="@drawable/listlogo2" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

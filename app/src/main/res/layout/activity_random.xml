@@ -253,8 +253,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/refreshnav" />
-
+            android:src="@drawable/refreshicon2" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
@@ -266,7 +265,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/tvnav" />
+            android:src="@drawable/tvicon2" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorites"
@@ -278,7 +277,7 @@
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/listnav" />
+            android:src="@drawable/listlogo2" />
     </LinearLayout>
 
 
