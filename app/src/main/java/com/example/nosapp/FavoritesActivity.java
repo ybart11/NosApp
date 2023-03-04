@@ -1,15 +1,14 @@
 package com.example.nosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,6 +38,7 @@ public class FavoritesActivity extends AppCompatActivity {
         randomButton();
         homeButton();
         favoritesButton();
+        settingsButton();
 
         recyclerView = findViewById(R.id.rvFavorites);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
@@ -52,6 +52,7 @@ public class FavoritesActivity extends AppCompatActivity {
         loadFavorites();
     }
 
+
     private void loadFavorites() {
 
         favsList.add(new Favorites(1,"Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
@@ -64,16 +65,17 @@ public class FavoritesActivity extends AppCompatActivity {
     }
 
     private void settingsButton() {
-        ImageButton ibList = findViewById(R.id.ibSettings);
-        ibList.setOnClickListener (new View.OnClickListener() {
+        ImageButton ibSettings = findViewById(R.id.ibSettings);
+        ibSettings.setOnClickListener(new View.OnClickListener() {
+
+            @Override
             public void onClick(View view) {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Share this text");
-                startActivity(Intent.createChooser(shareIntent, "Share using"));
+                SettingsDialogFragment dialogFragment = new SettingsDialogFragment();
+                dialogFragment.show(getSupportFragmentManager(), "SettingsDialogFragment");
             }
         });
     }
+
 
     private void randomButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.ibRandom);
