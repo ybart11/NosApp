@@ -17,19 +17,40 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ShowAdapter showAdapter;
     private ArrayList<Shows> showList;
-    YoutubeUtil youtubeUtil;
+    YoutubeUtil yt;
+    int [] showImages = {
+            R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo,
+            R.drawable.kim_possible_logo,
+            R.drawable.the_fairly_oddparents_logo,
+            R.drawable.hannah_montana_logo,
+            R.drawable.courage_the_cowardly_dog_logo,
+            R.drawable.ben_10_logo,
+            R.drawable.drake_josh_logo,
+            R.drawable.icarly_logo,
+            R.drawable.neds_declassified_school_survival_guide_logo,
+            R.drawable.rugrats_logo,
+            R.drawable.spongebob_squarepants_logo,
+            R.drawable.thats_so_raven_logo,
+            R.drawable.the_powerpuff_girls_logo,
+            R.drawable.the_suite_life_of_zack_cody_logo,
+            R.drawable.the_wild_thornberrys_logo,
+            R.drawable.zoey_101,
+            R.drawable.danny_phantom_logo};
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
+            yt = new YoutubeUtil();
+
             RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
             int position = viewHolder.getAdapterPosition();
-            int contactId = showList.get(position).getShowID();
             String showName = showList.get(position).getShowName();
+            String playlistId = showList.get(position).getPlaylistId();
             Intent intent = new Intent(MainActivity.this, ViewActivity.class);
-            intent.putExtra("randomVideoString", youtubeUtil.searchForRandomVideo(showName));
-            intent.putExtra("randomVideoString2",
-                    "Rugrats");
+            intent.putExtra("showname", showName);
+            intent.putExtra("videoId", yt.searchForVideoInPlaylist(playlistId));
+
             startActivity(intent);
         }
     };
@@ -53,24 +74,23 @@ public class MainActivity extends AppCompatActivity {
         showAdapter = new ShowAdapter(showList,this);
         showAdapter.setOnItemClickListener(onItemClickListener);
         recyclerView.setAdapter(showAdapter);
-
-        youtubeUtil = new YoutubeUtil();
-
-
         loadShows();
     }
 
-
-    //
-
-
-
     private void loadShows() {
-        AzureSQL az = new AzureSQL();
-        ArrayList<Shows> showList = az.getShows();
+//        AzureSQL az = new AzureSQL();
+//        ArrayList<Shows> showList = az.getShows();
 
-        ShowAdapter adapter = new ShowAdapter( showList,this);
-        recyclerView.setAdapter(adapter);
+//        ShowAdapter adapter = new ShowAdapter( showList,this);
+//        recyclerView.setAdapter(adapter);
+
+
+        String [] shownames = getResources().getStringArray(R.array.show_names_full_text);
+        String [] playlistids = getResources().getStringArray(R.array.playlist_ids);
+
+        for (int i = 0; i < shownames.length; i++) {
+            showList.add( new Shows(shownames[i], showImages[i], playlistids[i]));
+        }
 
 
 //        showList.add(new Shows(1,"The Adventures of Jimmy Neutron Boy Genius", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
@@ -86,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 //        showList.add(new Shows(11,"Spongebob Squarepants", R.drawable.spongebob_squarepants_logo));
 //        showList.add(new Shows(12,"That's So Raven", R.drawable.thats_so_raven_logo));
 //        showList.add(new Shows(13,"Powerpuff Girls", R.drawable.the_powerpuff_girls_logo));
-//        showList.add(new Shows(14,"The Suite Life of Zach and Cody", R.drawable.the_suite_life_of_zack_cody_logo));
+//        showList.add(new Shows(14,"The Suite Life of Zack and Cody", R.drawable.the_suite_life_of_zack_cody_logo));
 //        showList.add(new Shows(15,"The Wild Thornberrys", R.drawable.the_wild_thornberrys_logo));
 //        showList.add(new Shows(16,"Zoey 101", R.drawable.zoey_101));
 //        showList.add(new Shows(17,"Danny Phantom", R.drawable.danny_phantom_logo));

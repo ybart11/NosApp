@@ -61,6 +61,8 @@ public class ShowAdapter extends RecyclerView.Adapter {
 
 //        svh.getLogoImageview().setImageResource(resourceId);
 
+        svh.getLogoImageview().setImageResource(show.getShowLogo());
+
 
 
     }

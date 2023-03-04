@@ -40,7 +40,13 @@ public class ViewActivity extends AppCompatActivity {
         favoritesButton();
 
         extras = getIntent().getExtras();
-        displayClip(extras.getString("randomVideoString"));
+        if (extras != null) {
+            displayClip(extras.getString("videoId"));
+        }
+
+        Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" video" ,
+                Toast.LENGTH_LONG).show();
+
 
     }
 
@@ -159,7 +165,7 @@ public class ViewActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 String showname = shows.getShowName();
                 if (isChecked) {
-                    azureSQL.addFavorite(youtubeUtil.searchForRandomVideo(showname), shows.getShowName());
+                    azureSQL.addFavorite(extras.getString("videoId"), extras.getString("showname"));
                 } else {
                     azureSQL.deleteFavorite((youtubeUtil.searchForRandomVideo(showname)));
                 }

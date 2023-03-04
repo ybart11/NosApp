@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">NosApp</string>
+
+    <string-array name="show_names_full_text">
+        <item>The Adventures of Jimmy Neutron Boy Genius</item>
+        <item>Kim Possible</item>
+        <item>The Fairly Oddparents</item>
+        <item>Hannah Montana</item>
+        <item>Courage the Cowardly Dog</item>
+        <item>Ben 10</item>
+        <item>Drake and Josh</item>
+        <item>Icarly</item>
+        <item>Neds Declassified School Survival Guide</item>
+        <item>Rugrats</item>
+        <item>Spongebob Squarepants</item>
+        <item>That\'s So Raven</item>
+        <item>Powerpuff Girls</item>
+        <item>The Suite Life of Zack and Cody</item>
+        <item>The Wild Thornberrys</item>
+        <item>Zoey 101</item>
+        <item>Danny Phantom</item>
+    </string-array>
+
+    <string-array name="playlist_ids">
+        <item>PLmjjqWJH_2QK6sVcbpTzN8mYvk4tq1lZg</item>
+        <item>PLVMYQVPi-pmvQU3qy0PX3q-2HuUapezLf</item>
+        <item>PLZRF8ANIOLNDOIud18NadMA2nimq946LF</item>
+        <item>PLO8WsIxyJihzLgWWM5ypotHpNyrjHcxig</item>
+        <item>PLFlrT4LWzhG9ESpoe-ybAEOY74w3KAATT</item>
+        <item>PLwQyi96fFfD9cDuIcR55pF-AAu02G-akA</item>
+        <item>PL9KMgTZskKi9fbRzM5xhSWnP62P9xmKwm</item>
+        <item>PLTjHc6tMisa_p-8gvhnTcnbGcdU3NqYI_</item>
+        <item>PLX34qDh_nH5G8w8n05CWD_Rb0z6iYmuUN</item>
+        <item>PL3497HYbXxprFaiIZ0B1d649jYHKvY1Ro</item>
+        <item>PLAyjAVQs06ZYseDv-x9DTTadKyb_F1IRr</item>
+        <item>PLO8WsIxyJihzuZvuG_LFw5gfM8ClQTTcn</item>
+        <item>PLRSFLjmzNUAglYqL6bzfrdzfftUFKfvS4</item>
+        <item>PLO8WsIxyJihwNIsY0_mF6nNkAl3O0btOL</item>
+        <item>PLaMsRTtlDZET06_Yus34G3rmJdGf21gt8</item>
+        <item>PLO8WsIxyJihzcSkZh_s70DlQipVLagL7c</item>
+        <item>PLVMYQVPi-pmsa8iSmX71ZDBcIbc17tni3</item>
+    </string-array>
+
+
+
+
+
 </resources>

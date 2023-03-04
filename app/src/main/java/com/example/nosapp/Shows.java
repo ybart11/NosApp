@@ -13,6 +13,8 @@ public class Shows {
     private int episodes;
     private String synopsis;
     private String logo;
+    private int showLogo;
+    private String playlistId;
 
     public Shows() {
 
@@ -53,8 +55,24 @@ public class Shows {
         this.showID = showID;
         this.showname = showname;
         this.logo = logo;
-
     }
+
+    public Shows(int showID, String showname, int logo) {
+
+        this.showID = showID;
+        this.showname = showname;
+        this.showLogo = logo;
+    }
+
+    public Shows(String showname, int logo, String playlistId) {
+
+        this.showname = showname;
+        this.showLogo = logo;
+        this.playlistId = playlistId;
+    }
+
+
+
     public int getShowID() {
         return showID;
     }
@@ -101,4 +119,12 @@ public class Shows {
         return logo;
     }
     public void setLogo(String i) { logo = i; }
+
+    public int getShowLogo() {
+        return showLogo;
+    }
+
+    public String getPlaylistId() {
+        return playlistId;
+    }
 }
