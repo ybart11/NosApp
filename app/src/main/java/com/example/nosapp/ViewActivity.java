@@ -17,6 +17,8 @@ import android.widget.ToggleButton;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,8 @@ public class ViewActivity extends AppCompatActivity {
     YoutubeUtil youtubeUtil;
     AzureSQL azureSQL;
     Shows shows;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,7 @@ public class ViewActivity extends AppCompatActivity {
 
     }
 
-    private void displayClip(String videoId) {
+    private void displayClip (String videoId) {
 
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
@@ -60,12 +64,44 @@ public class ViewActivity extends AppCompatActivity {
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                youTubePlayer.cueVideo(videoId, 0);
+
+                // using pre-made custom ui
+                DefaultPlayerUiController defaultPlayerUiController =
+                        new DefaultPlayerUiController(youTubePlayerView, youTubePlayer);
+
+
+                defaultPlayerUiController.getMenu().addItem(new MenuItem("Delete",
+                        R.drawable.ic_baseline_delete_24, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Handle click on the delete menu item here
+                    }
+                }));
+
+                defaultPlayerUiController.getMenu().addItem(new MenuItem("Share",
+                        R.drawable.ic_baseline_share_24,new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Handle click on the delete menu item here
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        shareIntent.setType("text/plain");
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
+                                " Nostalgia App: " +
+                                "\nwww.youtube.com/watch?v=" +
+                                extras.getString("videoId"));
+                        startActivity(Intent.createChooser(shareIntent, "Share using"));
+
+                    }
+                }));
+
+                defaultPlayerUiController.showMenuButton(true);
+                defaultPlayerUiController.showYouTubeButton(false);
+
+                youTubePlayerView.setCustomPlayerUi(defaultPlayerUiController.getRootView());
+                youTubePlayer.cueVideo(videoId, 0 );
             }
         });
-
     }
-
     private void addDetails(String showname) {
         AzureSQL az = new AzureSQL();
         ArrayList<Shows> details = az.getShowDetail(showname);
