@@ -167,7 +167,7 @@ public class ViewActivity extends AppCompatActivity {
                 if (isChecked) {
                     azureSQL.addFavorite(extras.getString("videoId"), extras.getString("showname"));
                 } else {
-                    azureSQL.deleteFavorite((youtubeUtil.searchForRandomVideo(showname)));
+                    azureSQL.deleteFavorite(extras.getString("videoId"));
                 }
             }
         });
