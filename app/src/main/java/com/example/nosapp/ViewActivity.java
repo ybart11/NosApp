@@ -83,6 +83,13 @@ public class ViewActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         // Handle click on the delete menu item here
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        shareIntent.setType("text/plain");
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
+                                " Nostalgia App: " +
+                                "\nwww.youtube.com/watch?v=" +
+                                extras.getString("videoId"));
+                        startActivity(Intent.createChooser(shareIntent, "Share using"));
 
                     }
                 }));
