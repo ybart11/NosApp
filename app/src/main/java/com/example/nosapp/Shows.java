@@ -71,6 +71,8 @@ public class Shows {
         this.playlistId = playlistId;
     }
 
+    public Shows(String logo) {
+    }
 
 
     public int getShowID() {

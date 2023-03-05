@@ -54,12 +54,12 @@ public class FavoritesActivity extends AppCompatActivity {
 
 
     private void loadFavorites() {
+        AzureSQL az = new AzureSQL();
+        ArrayList<Favorites> favsList = az.getFavorites();
 
-        favsList.add(new Favorites(1,"Show 1", R.drawable.the_adventures_of_jimmy_neutron_boy_genius_logo));
-        favsList.add(new Favorites(2,"Show 2", R.drawable.kim_possible_logo));
-        favsList.add(new Favorites(3,"Show 3", R.drawable.the_fairly_oddparents_logo));
-        favsList.add(new Favorites(4,"Show 4", R.drawable.hannah_montana_logo));
-        favsList.add(new Favorites(5,"Show 5", R.drawable.courage_the_cowardly_dog_logo));
+        FavoritesAdapter adapter = new FavoritesAdapter( favsList,this);
+        recyclerView.setAdapter(adapter);
+
 
         favsAdapter.notifyDataSetChanged();
     }

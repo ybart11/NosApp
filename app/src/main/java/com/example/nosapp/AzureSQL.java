@@ -1,5 +1,7 @@
 package com.example.nosapp;
 
+import android.util.Log;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -12,30 +14,30 @@ public class AzureSQL {
 
     public static ArrayList<Favorites> getFavorites() {
         Connection connect;
-        String query = "SELECT logo FROM Favorites";
+        AzureCon c = new AzureCon();
+        connect = c.conclass();
+        String query = "SELECT s.logo FROM Favorites f JOIN Shows s ON f.showname = s.showname;";
+
         ArrayList<Favorites> favsList = new ArrayList<>();
 
-        AzureCon con = new AzureCon();
-        connect = con.conclass();
-
         try (
-                PreparedStatement statement = connect.prepareStatement(query)) {
-            ResultSet resultSet = statement.executeQuery();
+             PreparedStatement statement = connect.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-                int logo = resultSet.getInt("logo");
-
-
-                Favorites favs = new Favorites();
+                String logo = resultSet.getString("logo");
+                Log.d("Favorites", "Logo: " + logo);
+                Favorites favs = new Favorites(logo);
                 favsList.add(favs);
             }
-            connect.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return favsList;
     }
+
 
     public static ArrayList<Favorites> getClips(String showname) {
         Connection connect;
@@ -69,18 +71,18 @@ public class AzureSQL {
 
 
 
-    public static void addFavorite(String videoId,String showname){
+    public static void addFavorite(String videoID,String showname){
         Connection connect;
-        String query = "Insert into Favorites(videoID, showID) Values(?,?)";
+        String query = "Insert into Favorites(videoID, showname) Values(?,?)";
         AzureCon c = new AzureCon();
         connect = c.conclass();
 
 
         try (
                 PreparedStatement statement = connect.prepareStatement(query)) {
-            statement.setString(1, videoId);
+            statement.setString(1, videoID);
             statement.setString(2, showname);
-            statement.executeQuery();
+            statement.executeUpdate();
             connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,14 +94,14 @@ public class AzureSQL {
 
     public static void deleteFavorite(String videoId) {
         Connection connect;
-        String query = "DELETE FROM Favorites WHERE id=?";
+        String query = "DELETE FROM Favorites WHERE videoID=?";
         AzureCon c = new AzureCon();
         connect = c.conclass();
 
         try (
                 PreparedStatement statement = connect.prepareStatement(query)) {
             statement.setString(1, videoId);
-            statement.executeQuery();
+            statement.executeUpdate();
             connect.close();
         } catch (SQLException e) {
             e.printStackTrace();

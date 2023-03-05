@@ -55,12 +55,6 @@ public class ShowAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ShowViewHolder svh = (ShowViewHolder) holder;
         Shows show = showList.get(position);
-
-//        int resourceId = getResources().getIdentifier(show.getLogo(), "drawable",
-//                getPackageName();
-
-//        svh.getLogoImageview().setImageResource(resourceId);
-
         svh.getLogoImageview().setImageResource(show.getShowLogo());
 
 

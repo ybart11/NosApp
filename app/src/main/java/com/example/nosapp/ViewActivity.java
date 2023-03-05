@@ -54,6 +54,16 @@ public class ViewActivity extends AppCompatActivity {
         addDetails(extras.getString("showname"));
 
 
+
+        final ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
+        editToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDefaultToggleClick(v);
+            }
+        });
+
+
     }
 
     private void displayClip (String videoId) {
@@ -188,18 +198,14 @@ public class ViewActivity extends AppCompatActivity {
         });
     }
 
-
     public void onDefaultToggleClick(View view) {
-        final ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
-        editToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    azureSQL.addFavorite(extras.getString("videoId"), extras.getString("showname"));
-                } else {
-                    azureSQL.deleteFavorite(extras.getString("videoId"));
-                }
-            }
-        });
+        ToggleButton toggleButton = (ToggleButton) view;
+        if (toggleButton.isChecked()) {
+            AzureSQL.addFavorite(extras.getString("videoId"), extras.getString("showname"));
+            Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
+        } else {
+            AzureSQL.deleteFavorite(extras.getString("videoId"));
+            Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show();
+        }
     }
 }

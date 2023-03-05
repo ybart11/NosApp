@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class FavoritesAdapter extends RecyclerView.Adapter {
@@ -52,9 +54,25 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        FavoritesAdapter.FavoritesViewHolder fvh = (FavoritesViewHolder) holder;
-        Favorites favorites = favoritesList.get(position);
-        fvh.getLogoImageview().setImageResource(favorites.getLogo());
+        FavoritesAdapter.FavoritesViewHolder fvh = (FavoritesAdapter.FavoritesViewHolder) holder;
+        Favorites favs = favoritesList.get(position);
+        String logo = favs.getLogo();
+        System.out.println("Logo value: " + logo);
+        if (logo != null) {
+            int resId = pcontext.getResources().getIdentifier(logo, "drawable", pcontext.getPackageName());
+            if (resId != 0) {
+                fvh.getLogoImageview().setImageResource(resId);
+            } else {
+                // handle case where the image file is not found
+                fvh.getLogoImageview().setImageResource(R.drawable.favlogo);
+            }
+        } else {
+            // handle null case, for example set a default image
+            fvh.getLogoImageview().setImageResource(R.drawable.favlogo);
+
+
+        }
+
 
     }
 

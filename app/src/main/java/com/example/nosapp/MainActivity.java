@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadShows() {
 //        AzureSQL az = new AzureSQL();
 //        ArrayList<Shows> showList = az.getShows();
-
+//
 //        ShowAdapter adapter = new ShowAdapter( showList,this);
 //        recyclerView.setAdapter(adapter);
 
