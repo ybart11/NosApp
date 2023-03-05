@@ -34,6 +34,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
         az = new AzureSQL();
+
         favsList = az.getFavorites();
 
         favsAdapter = new FavoritesAdapter(favsList,this, this);
@@ -47,21 +48,18 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
     public void onItemClick(int position) {
         Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
 
-        intent.putExtra("favShowName", favsList.get(position).getShowName());
+        intent.putExtra("favShowLogo", favsList.get(position).getLogo());
         startActivity(intent);
 
-        Toast.makeText(this, "Generating \"" +  favsList.get(position).getShowName()
+        Toast.makeText(this, "Generating \"" +  favsList.get(position).getLogo()
                         + "\" video" ,
                 Toast.LENGTH_LONG).show();
-
     }
-
 
     private void loadFavorites() {
 
         FavoritesAdapter adapter = new FavoritesAdapter( favsList,this, this);
         recyclerView.setAdapter(adapter);
-
 
         favsAdapter.notifyDataSetChanged();
     }

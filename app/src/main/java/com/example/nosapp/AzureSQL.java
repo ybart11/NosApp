@@ -40,23 +40,49 @@ public class AzureSQL {
     }
 
 
-    public static ArrayList<Favorites> getClips(String showname) {
+//    public static ArrayList<Favorites> getClips(String showname) {
+//        Connection connect;
+//        String query = "SELECT videoID FROM Favorites where showname =?";
+//        ArrayList<Favorites> clipList = new ArrayList<>();
+//
+//        AzureCon con = new AzureCon();
+//        connect = con.conclass();
+//
+//        try (
+//                PreparedStatement statement = connect.prepareStatement(query)) {
+//            statement.setString(1, showname);
+//            ResultSet resultSet = statement.executeQuery();
+//
+//            while (resultSet.next()) {
+//                String videoid = resultSet.getString("videoID");
+//                Favorites favs = new Favorites(videoid);
+//                clipList.add(favs);
+//            }
+//            connect.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return clipList;
+//    }
+
+    // Get clips using logo name
+    public static ArrayList<String> getClips(String logo) {
         Connection connect;
-        String query = "SELECT videoID FROM Favorites where showname =?";
-        ArrayList<Favorites> clipList = new ArrayList<>();
+        String query = "SELECT videoID FROM Favorites f JOIN Shows s ON f.showname = s.showname WHERE s.logo = ?";
+        ArrayList<String> clipList = new ArrayList<>();
 
         AzureCon con = new AzureCon();
         connect = con.conclass();
 
         try (
                 PreparedStatement statement = connect.prepareStatement(query)) {
-            statement.setString(1, showname);
+            statement.setString(1, logo);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 String videoid = resultSet.getString("videoID");
-                Favorites favs = new Favorites(videoid);
-                clipList.add(favs);
+                clipList.add(videoid);
             }
             connect.close();
         } catch (SQLException e) {

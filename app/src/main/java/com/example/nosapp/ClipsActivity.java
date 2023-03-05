@@ -28,8 +28,8 @@ public class ClipsActivity extends AppCompatActivity {
         AzureSQL az = new AzureSQL();
         extras = getIntent().getExtras();
 
-        // Show name passed from FavoritesActivity
-        String favShowName = extras.getString("favShowName");
+        // Show logo passed from FavoritesActivity
+        String favShowName = extras.getString("favShowLogo");
 
         if (extras != null) {
             adapter = new ClipsAdapter(az.getClips(favShowName), this.getLifecycle());

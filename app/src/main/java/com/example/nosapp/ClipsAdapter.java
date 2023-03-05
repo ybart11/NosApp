@@ -18,10 +18,10 @@ import java.util.ArrayList;
 
 public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
 
-    private ArrayList<Favorites> videoIds;
+    private ArrayList<String> videoIds;
     private Lifecycle lifecycle;
 
-    public ClipsAdapter(ArrayList<Favorites> videoIds, Lifecycle lifecycle) {
+    public ClipsAdapter(ArrayList<String> videoIds, Lifecycle lifecycle) {
         this.videoIds = videoIds;
         this.lifecycle = lifecycle;
     }
