@@ -35,8 +35,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
     }
 
     public FavoritesAdapter(ArrayList<Favorites> arrayList, Context context) {
-        pcontext = context;
         favoritesList = arrayList;
+        pcontext = context;
     }
 
     public void setOnItemClickListener(View.OnClickListener itemClickListener) {

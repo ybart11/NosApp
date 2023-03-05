@@ -15,19 +15,19 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiCo
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem;
 
 
-public class FavClipsAdapter extends RecyclerView.Adapter<FavClipsAdapter.ViewHolder>{
+public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
 
     private String[] videoIds;
     private Lifecycle lifecycle;
 
-    public FavClipsAdapter(String[] videoIds, Lifecycle lifecycle) {
+    public ClipsAdapter(String[] videoIds, Lifecycle lifecycle) {
         this.videoIds = videoIds;
         this.lifecycle = lifecycle;
     }
 
     @NonNull
     @Override
-    public FavClipsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ClipsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView)
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.favorites_clip_item, parent, false);
         lifecycle.addObserver(youTubePlayerView);
@@ -36,7 +36,7 @@ public class FavClipsAdapter extends RecyclerView.Adapter<FavClipsAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavClipsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ClipsAdapter.ViewHolder holder, int position) {
         holder.cueVideo(videoIds[position]);
     }
 

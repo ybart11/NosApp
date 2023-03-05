@@ -72,6 +72,7 @@ public class Shows {
     }
 
     public Shows(String logo) {
+        this.logo = logo;
     }
 
 

@@ -1,22 +1,18 @@
 package com.example.nosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-
-import java.util.ArrayList;
 
 public class ClipsActivity extends AppCompatActivity {
 
     Bundle extras;
-    FavClipsAdapter adapter;
+    ClipsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +24,7 @@ public class ClipsActivity extends AppCompatActivity {
 
         String[] videoIds = {};
 
-        adapter = new FavClipsAdapter(videoIds, this.getLifecycle());
+        adapter = new ClipsAdapter(videoIds, this.getLifecycle());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
