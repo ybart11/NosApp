@@ -1,5 +1,6 @@
 package com.example.nosapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,11 +50,11 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
     public FavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(pcontext);
         View view = inflater.inflate(R.layout.show_item, parent, false);
-        return new FavoritesAdapter.FavoritesViewHolder(view);
+        return new FavoritesViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         FavoritesAdapter.FavoritesViewHolder fvh = (FavoritesAdapter.FavoritesViewHolder) holder;
         Favorites favs = favoritesList.get(position);
         String logo = favs.getLogo();

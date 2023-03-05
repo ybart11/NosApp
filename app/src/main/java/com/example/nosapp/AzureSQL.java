@@ -16,7 +16,7 @@ public class AzureSQL {
         Connection connect;
         AzureCon c = new AzureCon();
         connect = c.conclass();
-        String query = "SELECT s.logo FROM Favorites f JOIN Shows s ON f.showname = s.showname;";
+        String query = "SELECT DISTINCT s.logo FROM Favorites f JOIN Shows s ON f.showname = s.showname;";
 
         ArrayList<Favorites> favsList = new ArrayList<>();
 
@@ -30,6 +30,7 @@ public class AzureSQL {
                 Favorites favs = new Favorites(logo);
                 favsList.add(favs);
             }
+            connect.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

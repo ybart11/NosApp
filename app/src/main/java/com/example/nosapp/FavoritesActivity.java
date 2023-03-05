@@ -23,12 +23,12 @@ public class FavoritesActivity extends AppCompatActivity {
         public void onClick(View view) {
             RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
             int position = viewHolder.getAdapterPosition();
-            int contactId = favsList.get(position).getShowID();
+            int showId = favsList.get(position).getShowID();
             Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
+            intent.putExtra("showname", showId);
             startActivity(intent);
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +47,11 @@ public class FavoritesActivity extends AppCompatActivity {
 
         favsAdapter = new FavoritesAdapter(favsList,this);
         favsAdapter.setOnItemClickListener(onItemClickListener);
+
         recyclerView.setAdapter(favsAdapter);
 
         loadFavorites();
     }
-
 
     private void loadFavorites() {
         AzureSQL az = new AzureSQL();
@@ -63,6 +63,8 @@ public class FavoritesActivity extends AppCompatActivity {
 
         favsAdapter.notifyDataSetChanged();
     }
+
+
 
     private void settingsButton() {
         ImageButton ibSettings = findViewById(R.id.ibSettings);
