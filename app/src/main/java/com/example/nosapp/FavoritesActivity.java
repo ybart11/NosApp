@@ -9,26 +9,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class FavoritesActivity extends AppCompatActivity {
+public class FavoritesActivity extends AppCompatActivity implements FavoritesAdapter.RecyclerViewInterface {
 
     private RecyclerView recyclerView;
     private FavoritesAdapter favsAdapter;
-    private ArrayList<Favorites> favsList;
-
-    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
-            int position = viewHolder.getAdapterPosition();
-            int showId = favsList.get(position).getShowID();
-            Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
-            intent.putExtra("showname", showId);
-            startActivity(intent);
-        }
-    };
+    ArrayList<Favorites> favsList;
+    AzureSQL az;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,28 +33,38 @@ public class FavoritesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvFavorites);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
-        favsList = new ArrayList<>();
+        az = new AzureSQL();
+        favsList = az.getFavorites();
 
-        favsAdapter = new FavoritesAdapter(favsList,this);
-        favsAdapter.setOnItemClickListener(onItemClickListener);
-
+        favsAdapter = new FavoritesAdapter(favsList,this, this);
         recyclerView.setAdapter(favsAdapter);
 
         loadFavorites();
     }
 
-    private void loadFavorites() {
-        AzureSQL az = new AzureSQL();
-        ArrayList<Favorites> favsList = az.getFavorites();
 
-        FavoritesAdapter adapter = new FavoritesAdapter( favsList,this);
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
+
+        intent.putExtra("favShowName", favsList.get(position).getShowName());
+        startActivity(intent);
+
+        Toast.makeText(this, "Generating \"" +  favsList.get(position).getShowName()
+                        + "\" video" ,
+                Toast.LENGTH_LONG).show();
+
+    }
+
+
+    private void loadFavorites() {
+
+        FavoritesAdapter adapter = new FavoritesAdapter( favsList,this, this);
         recyclerView.setAdapter(adapter);
 
 
         favsAdapter.notifyDataSetChanged();
     }
-
-
 
     private void settingsButton() {
         ImageButton ibSettings = findViewById(R.id.ibSettings);

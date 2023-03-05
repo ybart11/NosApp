@@ -14,13 +14,14 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem;
 
+import java.util.ArrayList;
 
 public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
 
-    private String[] videoIds;
+    private ArrayList<Favorites> videoIds;
     private Lifecycle lifecycle;
 
-    public ClipsAdapter(String[] videoIds, Lifecycle lifecycle) {
+    public ClipsAdapter(ArrayList<Favorites> videoIds, Lifecycle lifecycle) {
         this.videoIds = videoIds;
         this.lifecycle = lifecycle;
     }
@@ -37,12 +38,12 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ClipsAdapter.ViewHolder holder, int position) {
-        holder.cueVideo(videoIds[position]);
+        holder.cueVideo(String.valueOf(videoIds.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return videoIds.length;
+        return videoIds.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -106,19 +107,5 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
         }
 
     }
-
-//    private void shareButton() {
-//        ImageButton ibList = findViewById(R.id.buttonshare);
-//        ibList.setOnClickListener (new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//                shareIntent.setType("text/plain");
-//                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
-//                        " Nostalgia App: " +
-//                        "\nwww.youtube.com/watch?v=" +
-//                        extras.getString("randomVideoString"));
-//                startActivity(Intent.createChooser(shareIntent, "Share using"));
-//            }
-//        });
-//    }
 }
+

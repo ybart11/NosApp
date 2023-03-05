@@ -1,6 +1,5 @@
 package com.example.nosapp;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,24 +9,33 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
 public class FavoritesAdapter extends RecyclerView.Adapter {
 
     private Context pcontext;
     private ArrayList<Favorites> favoritesList;
-    private View.OnClickListener mOnItemClickListener;
+    private final RecyclerViewInterface recyclerViewInterface;
 
-    public class FavoritesViewHolder extends RecyclerView.ViewHolder {
+    public static class FavoritesViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageLogo;
 
-        public FavoritesViewHolder(@NonNull View itemView) {
+        public FavoritesViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             imageLogo = itemView.findViewById(R.id.show_image);
-            itemView.setTag(this);
-            itemView.setOnClickListener(mOnItemClickListener);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null) {
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
 
         public ImageView getLogoImageview() {
@@ -35,26 +43,23 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public FavoritesAdapter(ArrayList<Favorites> arrayList, Context context) {
+    public FavoritesAdapter(ArrayList<Favorites> arrayList, Context context,
+                            RecyclerViewInterface recyclerViewInterface) {
         favoritesList = arrayList;
         pcontext = context;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
-
-    public void setOnItemClickListener(View.OnClickListener itemClickListener) {
-        mOnItemClickListener = itemClickListener;
-    }
-
 
     @NonNull
     @Override
     public FavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(pcontext);
         View view = inflater.inflate(R.layout.show_item, parent, false);
-        return new FavoritesViewHolder(view);
+        return new FavoritesAdapter.FavoritesViewHolder(view, recyclerViewInterface);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         FavoritesAdapter.FavoritesViewHolder fvh = (FavoritesAdapter.FavoritesViewHolder) holder;
         Favorites favs = favoritesList.get(position);
         String logo = favs.getLogo();
@@ -70,15 +75,16 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
         } else {
             // handle null case, for example set a default image
             fvh.getLogoImageview().setImageResource(R.drawable.favlogo);
-
-
         }
-
-
     }
 
     @Override
     public int getItemCount() {
         return favoritesList.size();
+    }
+
+    public interface RecyclerViewInterface {
+
+        void onItemClick(int position);
     }
 }

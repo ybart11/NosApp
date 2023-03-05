@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 public class ClipsActivity extends AppCompatActivity {
 
     Bundle extras;
     ClipsAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +25,16 @@ public class ClipsActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvFavoriteClips);
         recyclerView.setHasFixedSize(true);
 
-        String[] videoIds = {};
+        AzureSQL az = new AzureSQL();
+        extras = getIntent().getExtras();
 
-        adapter = new ClipsAdapter(videoIds, this.getLifecycle());
+        // Show name passed from FavoritesActivity
+        String favShowName = extras.getString("favShowName");
+
+        if (extras != null) {
+            adapter = new ClipsAdapter(az.getClips(favShowName), this.getLifecycle());
+        }
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
@@ -35,8 +45,6 @@ public class ClipsActivity extends AppCompatActivity {
         homeButton();
         favoritesButton();
         settingsButton();
-
-        extras = getIntent().getExtras();
 
     }
 
