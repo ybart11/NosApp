@@ -42,7 +42,7 @@ public class AzureSQL {
 
     public static ArrayList<Favorites> getClips(String showname) {
         Connection connect;
-        String query = "SELECT videoId FROM Favorites where showname =?";
+        String query = "SELECT videoID FROM Favorites where showname =?";
         ArrayList<Favorites> clipList = new ArrayList<>();
 
         AzureCon con = new AzureCon();
@@ -54,12 +54,8 @@ public class AzureSQL {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("showname");
-                int logo = resultSet.getInt("logo");
-
-
-                Favorites favs = new Favorites();
+                String videoid = resultSet.getString("videoID");
+                Favorites favs = new Favorites(videoid);
                 clipList.add(favs);
             }
             connect.close();
