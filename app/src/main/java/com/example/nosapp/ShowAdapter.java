@@ -2,11 +2,12 @@ package com.example.nosapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +48,7 @@ public class ShowAdapter extends RecyclerView.Adapter {
     @Override
     public ShowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(pcontext);
-        View view = inflater.inflate(R.layout.show_item, parent, false);
+        View view = inflater.inflate(R.layout.shows_item, parent, false);
         return new ShowViewHolder(view);
     }
 
@@ -56,6 +57,7 @@ public class ShowAdapter extends RecyclerView.Adapter {
         ShowViewHolder svh = (ShowViewHolder) holder;
         Shows show = showList.get(position);
         svh.getLogoImageview().setImageResource(show.getShowLogo());
+
 
 
 

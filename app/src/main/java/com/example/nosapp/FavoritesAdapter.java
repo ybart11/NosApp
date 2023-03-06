@@ -22,7 +22,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
 
         public FavoritesViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
-            imageLogo = itemView.findViewById(R.id.show_image);
+            imageLogo = itemView.findViewById(R.id.favs_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -54,7 +54,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
     @Override
     public FavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(pcontext);
-        View view = inflater.inflate(R.layout.show_item, parent, false);
+        View view = inflater.inflate(R.layout.favorites_item, parent, false);
         return new FavoritesAdapter.FavoritesViewHolder(view, recyclerViewInterface);
     }
 

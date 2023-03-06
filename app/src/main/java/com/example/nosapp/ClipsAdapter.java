@@ -30,7 +30,7 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
     @Override
     public ClipsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView)
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.favorites_clip_item, parent, false);
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.clips_item, parent, false);
         lifecycle.addObserver(youTubePlayerView);
 
         return new ViewHolder(youTubePlayerView);

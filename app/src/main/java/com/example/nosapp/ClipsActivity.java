@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import java.util.ArrayList;
-
 public class ClipsActivity extends AppCompatActivity {
 
     Bundle extras;
@@ -20,7 +18,7 @@ public class ClipsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite_clip);
+        setContentView(R.layout.activity_clips);
 
         RecyclerView recyclerView = findViewById(R.id.rvFavoriteClips);
         recyclerView.setHasFixedSize(true);
