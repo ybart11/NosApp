@@ -22,8 +22,10 @@ import com.google.api.services.youtube.YouTube;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 
 public class YoutubeUtil extends AsyncTask<String, Void, Video> {
@@ -130,6 +132,51 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
         } catch (IOException e) {
             e.printStackTrace();
             return "Failed";
+        }
+    }
+
+    // Returns 10 videos from the playlist
+    String[] searchForTenVideosInPlaylist(String playlistId) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        mYouTube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), httpRequest -> {})
+                .setApplicationName("Youtube Practice")
+                .build();
+
+        try {
+            YouTube.PlaylistItems.List playlistItemsListRequest = mYouTube.playlistItems().list("snippet");
+            playlistItemsListRequest.setKey(API_KEY);
+            playlistItemsListRequest.setPlaylistId(playlistId);
+            playlistItemsListRequest.setMaxResults(50L);
+
+            PlaylistItemListResponse playlistItemListResponse = playlistItemsListRequest.execute();
+            List<PlaylistItem> playlistItems = playlistItemListResponse.getItems();
+
+            // Select 10 random playlist items
+            List<PlaylistItem> randomPlaylistItems = new ArrayList<>();
+            int playlistSize = playlistItems.size();
+            int itemsToSelect = Math.min(playlistSize, 10);
+            Set<Integer> selectedIndexes = new HashSet<>();
+            while (selectedIndexes.size() < itemsToSelect) {
+                int randomIndex = (int) (Math.random() * playlistSize);
+                if (!selectedIndexes.contains(randomIndex)) {
+                    selectedIndexes.add(randomIndex);
+                    randomPlaylistItems.add(playlistItems.get(randomIndex));
+                }
+            }
+
+            // Extract video IDs from selected playlist items
+            String[] videoIds = new String[itemsToSelect];
+            for (int i = 0; i < itemsToSelect; i++) {
+                String videoId = randomPlaylistItems.get(i).getSnippet().getResourceId().getVideoId();
+                Log.d("Random Video ID " + (i + 1), videoId);
+                videoIds[i] = videoId;
+            }
+            return videoIds;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new String[]{"Failed"};
         }
     }
 }

@@ -2,6 +2,11 @@ package com.example.nosapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,9 +33,8 @@ import kotlin.OverloadResolutionByLambdaReturnType;
 public class ViewActivity extends AppCompatActivity {
     YouTubePlayerView youTubePlayerView;
     Bundle extras;
-    YoutubeUtil youtubeUtil;
-    AzureSQL azureSQL;
-    Shows shows;
+    private String[] videoIds; // Declare the array of videoIds
+    String showname;
 
 
 
@@ -45,11 +49,18 @@ public class ViewActivity extends AppCompatActivity {
         favoritesButton();
 
         extras = getIntent().getExtras();
+        // Get the array of videoIds from the Intent extras
+        Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            displayClip(extras.getString("videoId"));
+            videoIds = extras.getStringArray("videoIds");
         }
 
-        Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" video" ,
+        // Setting up Fragment that allows user to swipe
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        PagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), videoIds, showname);
+        viewPager.setAdapter(viewPagerAdapter);
+
+        Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" videos" ,
                 Toast.LENGTH_LONG).show();
         addDetails(extras.getString("showname"));
 
@@ -62,8 +73,37 @@ public class ViewActivity extends AppCompatActivity {
                 onDefaultToggleClick(v);
             }
         });
+    }
 
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+        private String[] videoIds;
+        private String shownamee;
 
+        public ViewPagerAdapter(@NonNull FragmentManager fm, String[] videoIds, String showname) {
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            this.videoIds = videoIds; // Assign the array of videoIds to the instance variable
+            this.shownamee = showname;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            ViewActivityFragment fragment = new ViewActivityFragment();
+            Bundle args = new Bundle();
+            args.putStringArray("videoIds", videoIds); // Pass the array of videoIds as an argument
+            args.putString("showname", shownamee);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return videoIds.length;
+        }
+
+        @Override
+        public CharSequence getPageTitle (int position) {
+            return "Page " +position;
+        }
     }
 
     private void displayClip (String videoId) {
