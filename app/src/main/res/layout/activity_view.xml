@@ -27,8 +27,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/tvpink" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
             android:layout_width="356dp"
             android:layout_height="185dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -37,8 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView3"
             app:layout_constraintVertical_bias="0.628">
-
-        </androidx.viewpager.widget.ViewPager>
+        </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
