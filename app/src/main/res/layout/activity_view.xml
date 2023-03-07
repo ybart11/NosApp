@@ -25,6 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/tvpink" />
 
         <androidx.viewpager.widget.ViewPager
@@ -43,15 +44,14 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="463dp"
-        android:layout_height="261dp"
+        android:layout_width="444dp"
+        android:layout_height="500dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.009">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -213,7 +213,7 @@
                 android:layout_width="66dp"
                 android:layout_height="62dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="220dp"
+                android:layout_marginEnd="200dp"
                 android:layout_marginBottom="156dp"
                 android:background="@drawable/toggle_selector"
                 android:onClick="onDefaultToggleClick"
@@ -224,6 +224,50 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="394dp"
+                android:layout_height="67dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="34dp"
+                android:onClick="expand"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                app:contentPadding="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editSynopsis"
+                app:layout_constraintVertical_bias="1.0">
+
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:layout_width="374dp"
+                    android:layout_height="66dp"
+                    android:layout_marginEnd="463dp"
+                    android:layout_marginBottom="365dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="358dp"
+                        android:layout_height="38dp"
+                        android:text="Main Actors"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/actors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="463dp"
+                        android:layout_marginBottom="365dp"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

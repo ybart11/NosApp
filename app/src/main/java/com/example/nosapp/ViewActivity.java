@@ -10,11 +10,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -35,8 +38,8 @@ public class ViewActivity extends AppCompatActivity {
     Bundle extras;
     private String[] videoIds; // Declare the array of videoIds
     String showname;
-
-
+    TextView actors;
+    LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,10 @@ public class ViewActivity extends AppCompatActivity {
         randomButton();
         homeButton();
         favoritesButton();
+
+        actors = findViewById(R.id.actors);
+        layout = findViewById(R.id.layout);
+
 
         extras = getIntent().getExtras();
         // Get the array of videoIds from the Intent extras
@@ -73,6 +80,13 @@ public class ViewActivity extends AppCompatActivity {
                 onDefaultToggleClick(v);
             }
         });
+    }
+
+    public void expand(View view) {
+        int v = (actors.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+
+        TransitionManager.beginDelayedTransition(layout, new AutoTransition());
+        actors.setVisibility(v);
     }
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
