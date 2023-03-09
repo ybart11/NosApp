@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ViewActivity.class);
             intent.putExtra("showname", showName);
 //            intent.putExtra("videoId", yt.searchForVideoInPlaylist(playlistId));
-            intent.putExtra("videoIds",
-                    yt.searchForTenVideosInPlaylist(playlistId));
+            intent.putExtra("videoId",
+                    yt.searchForVideoInPlaylist(playlistId));
 
             startActivity(intent);
         }
@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //        ShowAdapter adapter = new ShowAdapter( showList,this);
 //        recyclerView.setAdapter(adapter);
-
 
         String [] shownames = getResources().getStringArray(R.array.show_names_full_text);
         String [] playlistids = getResources().getStringArray(R.array.playlist_ids);
