@@ -50,7 +50,6 @@ public class ViewActivity extends AppCompatActivity {
 
         extras = getIntent().getExtras();
         // Get the array of videoIds from the Intent extras
-        Bundle extras = getIntent().getExtras();
         if (extras != null) {
             videoIds = extras.getStringArray("videoIds");
         }
