@@ -22,6 +22,7 @@ import android.widget.ToggleButton;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.MenuItem;
@@ -35,7 +36,8 @@ public class ViewActivity extends AppCompatActivity {
     YouTubePlayerView youTubePlayerView;
     Bundle extras;
     SwipeRefreshLayout swipeRefreshLayout;
-
+    YoutubeUtil yt;
+    String currentVideoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +48,11 @@ public class ViewActivity extends AppCompatActivity {
         homeButton();
         favoritesButton();
 
-        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
-
         extras = getIntent().getExtras();
-        // Get the array of videoIds from the Intent extras
-        Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            displayClip(extras.getString("videoId"));
+            currentVideoId = extras.getString("videoId");
+            displayClip(currentVideoId);
+
         }
 
         Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" videos" ,
@@ -68,6 +68,25 @@ public class ViewActivity extends AppCompatActivity {
                 onDefaultToggleClick(v);
             }
         });
+
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                yt = new YoutubeUtil();
+
+                // Uncheck heart button
+                editToggle.setChecked(false);
+
+                // Generate new videoId
+                String newVideoId = yt.searchForVideoInPlaylist(extras.getString("playlistId"));
+                if (!newVideoId.equals(currentVideoId)) {
+                    currentVideoId = newVideoId;
+                    displayNewClip(currentVideoId);
+                }
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     private void displayClip (String videoId) {
@@ -75,7 +94,7 @@ public class ViewActivity extends AppCompatActivity {
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
 
-        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+        youTubePlayerView.addYouTubePlayerListener( new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
 
@@ -113,6 +132,47 @@ public class ViewActivity extends AppCompatActivity {
 
                 youTubePlayerView.setCustomPlayerUi(defaultPlayerUiController.getRootView());
                 youTubePlayer.cueVideo(videoId, 0 );
+            }
+        });
+    }
+
+    private void displayNewClip(String videoId) {
+        youTubePlayerView.getYouTubePlayerWhenReady(new YouTubePlayerCallback() {
+            @Override
+            public void onYouTubePlayer(@NonNull YouTubePlayer youTubePlayer) {
+                // using pre-made custom ui
+                DefaultPlayerUiController defaultPlayerUiController =
+                        new DefaultPlayerUiController(youTubePlayerView, youTubePlayer);
+
+                defaultPlayerUiController.getMenu().addItem(new MenuItem("Delete",
+                        R.drawable.ic_baseline_delete_24, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Handle click on the delete menu item here
+                    }
+                }));
+
+                defaultPlayerUiController.getMenu().addItem(new MenuItem("Share",
+                        R.drawable.ic_baseline_share_24, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Handle click on the share menu item here
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        shareIntent.setType("text/plain");
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
+                                " Nostalgia App: " +
+                                "\nwww.youtube.com/watch?v=" +
+                                currentVideoId);
+                        startActivity(Intent.createChooser(shareIntent, "Share using"));
+
+                    }
+                }));
+
+                defaultPlayerUiController.showMenuButton(true);
+                defaultPlayerUiController.showYouTubeButton(false);
+
+                youTubePlayerView.setCustomPlayerUi(defaultPlayerUiController.getRootView());
+                youTubePlayer.cueVideo(videoId, 0);
             }
         });
     }
@@ -185,10 +245,10 @@ public class ViewActivity extends AppCompatActivity {
     public void onDefaultToggleClick(View view) {
         ToggleButton toggleButton = (ToggleButton) view;
         if (toggleButton.isChecked()) {
-            AzureSQL.addFavorite(extras.getString("videoId"), extras.getString("showname"));
+            AzureSQL.addFavorite(currentVideoId, extras.getString("showname"));
             Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
         } else {
-            AzureSQL.deleteFavorite(extras.getString("videoId"));
+            AzureSQL.deleteFavorite(currentVideoId);
             Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show();
         }
     }
