@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -33,6 +34,7 @@ import kotlin.OverloadResolutionByLambdaReturnType;
 public class ViewActivity extends AppCompatActivity {
     YouTubePlayerView youTubePlayerView;
     Bundle extras;
+    SwipeRefreshLayout swipeRefreshLayout;
 
 
     @Override
@@ -43,6 +45,8 @@ public class ViewActivity extends AppCompatActivity {
         randomButton();
         homeButton();
         favoritesButton();
+
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
 
         extras = getIntent().getExtras();
         // Get the array of videoIds from the Intent extras
