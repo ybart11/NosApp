@@ -52,10 +52,8 @@ public class MainActivity extends AppCompatActivity {
             String playlistId = showList.get(position).getPlaylistId();
             Intent intent = new Intent(MainActivity.this, ViewActivity.class);
             intent.putExtra("showname", showName);
-//            intent.putExtra("videoId", yt.searchForVideoInPlaylist(playlistId));
-            intent.putExtra("videoId",
-                    yt.searchForVideoInPlaylist(playlistId));
-
+            intent.putExtra("playlistId", playlistId);
+            intent.putExtra("videoId", yt.searchForVideoInPlaylist(playlistId));
             startActivity(intent);
         }
     };

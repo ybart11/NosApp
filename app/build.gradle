@@ -40,8 +40,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation files('C:/Users/jaffe/AndroidStudioProjects/NosApp/app/libs/jtds-1.3.1.jar')
     testImplementation 'junit:junit:4.13.2'
+//    implementation files('libs/jtds-1.3.1.jar')
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
@@ -49,8 +49,6 @@ dependencies {
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
     implementation 'com.google.api-client:google-api-client:1.31.0'
     implementation 'com.google.oauth-client:google-oauth-client-jetty:1.31.0'
-
-
-
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
 }
