@@ -38,6 +38,7 @@ public class ViewActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     YoutubeUtil yt;
     String currentVideoId;
+    ToggleButton editToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,7 @@ public class ViewActivity extends AppCompatActivity {
                 Toast.LENGTH_LONG).show();
         addDetails(extras.getString("showname"));
 
-
-
-        final ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
+        editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
         editToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +68,11 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
 
+        initRefresh();
+
+    }
+
+    private void initRefresh() {
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -87,6 +91,7 @@ public class ViewActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
     }
 
     private void displayClip (String videoId) {
@@ -101,15 +106,6 @@ public class ViewActivity extends AppCompatActivity {
                 // using pre-made custom ui
                 DefaultPlayerUiController defaultPlayerUiController =
                         new DefaultPlayerUiController(youTubePlayerView, youTubePlayer);
-
-
-                defaultPlayerUiController.getMenu().addItem(new MenuItem("Delete",
-                        R.drawable.ic_baseline_delete_24, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Handle click on the delete menu item here
-                    }
-                }));
 
                 defaultPlayerUiController.getMenu().addItem(new MenuItem("Share",
                         R.drawable.ic_baseline_share_24,new View.OnClickListener() {

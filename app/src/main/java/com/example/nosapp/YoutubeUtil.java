@@ -36,15 +36,6 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
 
     private YouTube mYouTube;
 
-    private TextView mTitleTextView;
-
-
-    public YoutubeUtil (TextView titleTextView) {
-        mTitleTextView = titleTextView;
-    }
-
-    public YoutubeUtil () {}
-
     @Override
     protected Video doInBackground(String... params) {
         YouTube youTube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(),
@@ -63,14 +54,6 @@ public class YoutubeUtil extends AsyncTask<String, Void, Video> {
         }
         return null;
     }
-
-    @Override
-    protected void onPostExecute (Video video) {
-        if (video != null) {
-            mTitleTextView.setText(video.getSnippet().getTitle());
-        }
-    }
-
 
     String searchForRandomVideo(String showname) {
 
