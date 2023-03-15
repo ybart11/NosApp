@@ -111,15 +111,6 @@ public class ViewActivity extends AppCompatActivity {
                 DefaultPlayerUiController defaultPlayerUiController =
                         new DefaultPlayerUiController(youTubePlayerView, youTubePlayer);
 
-
-                defaultPlayerUiController.getMenu().addItem(new MenuItem("Delete",
-                        R.drawable.ic_baseline_delete_24, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Handle click on the delete menu item here
-                    }
-                }));
-
                 defaultPlayerUiController.getMenu().addItem(new MenuItem("Share",
                         R.drawable.ic_baseline_share_24,new View.OnClickListener() {
                     @Override
@@ -151,14 +142,6 @@ public class ViewActivity extends AppCompatActivity {
                 // using pre-made custom ui
                 DefaultPlayerUiController defaultPlayerUiController =
                         new DefaultPlayerUiController(youTubePlayerView, youTubePlayer);
-
-                defaultPlayerUiController.getMenu().addItem(new MenuItem("Delete",
-                        R.drawable.ic_baseline_delete_24, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Handle click on the delete menu item here
-                    }
-                }));
 
                 defaultPlayerUiController.getMenu().addItem(new MenuItem("Share",
                         R.drawable.ic_baseline_share_24, new View.OnClickListener() {
