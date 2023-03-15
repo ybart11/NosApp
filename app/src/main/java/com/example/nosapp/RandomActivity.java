@@ -43,7 +43,7 @@ public class RandomActivity extends AppCompatActivity {
         favoritesButton();
 
         showList = new ArrayList<>();
-
+        yt = new YoutubeUtil();
         currentVideoId = selectRandomVideo();
 
         try {
@@ -70,7 +70,6 @@ public class RandomActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                yt = new YoutubeUtil();
 
                 // Uncheck heart button
                 editToggle.setChecked(false);
@@ -89,8 +88,6 @@ public class RandomActivity extends AppCompatActivity {
     }
 
     private String selectRandomVideo () {
-
-        yt = new YoutubeUtil();
 
         String [] shownames = getResources().getStringArray(R.array.show_names_full_text);
         String [] playlistids = getResources().getStringArray(R.array.playlist_ids);
@@ -128,7 +125,7 @@ public class RandomActivity extends AppCompatActivity {
                         shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
                                 " Nostalgia App: " +
                                 "\nwww.youtube.com/watch?v=" +
-                                currentVideoId);
+                                videoId);
                         startActivity(Intent.createChooser(shareIntent, "Share using"));
 
                     }
@@ -161,7 +158,7 @@ public class RandomActivity extends AppCompatActivity {
                         shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
                                 " Nostalgia App: " +
                                 "\nwww.youtube.com/watch?v=" +
-                                currentVideoId);
+                                videoId);
                         startActivity(Intent.createChooser(shareIntent, "Share using"));
 
                     }
@@ -209,6 +206,17 @@ public class RandomActivity extends AppCompatActivity {
         }
     }
 
+    public void onDefaultToggleClick(View view) {
+        ToggleButton toggleButton = (ToggleButton) view;
+        if (toggleButton.isChecked()) {
+            AzureSQL.addFavorite(currentVideoId, currentShowname);
+            Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
+        } else {
+            AzureSQL.deleteFavorite(currentVideoId);
+            Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void randomButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
@@ -241,14 +249,4 @@ public class RandomActivity extends AppCompatActivity {
         });
     }
 
-    public void onDefaultToggleClick(View view) {
-        ToggleButton toggleButton = (ToggleButton) view;
-        if (toggleButton.isChecked()) {
-            AzureSQL.addFavorite(currentVideoId, currentShowname);
-            Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
-        } else {
-            AzureSQL.deleteFavorite(currentVideoId);
-            Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show();
-        }
-    }
 }
