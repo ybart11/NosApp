@@ -141,13 +141,11 @@
                 android:id="@+id/editEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="104dp"
                 android:layout_marginTop="7dp"
-                android:layout_marginEnd="302dp"
                 android:text="TextView"
                 android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textEndDate"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editStartDate" />
 
             <TextView
@@ -165,15 +163,13 @@
                 android:id="@+id/editSeasons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
+                android:layout_marginStart="104dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="302dp"
                 android:layout_marginBottom="12dp"
                 android:text="TextView"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/textEpisodes"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textSeasons"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editEndDate" />
 
             <TextView
