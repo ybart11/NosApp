@@ -50,15 +50,21 @@ public class ViewActivity extends AppCompatActivity {
         favoritesButton();
 
         extras = getIntent().getExtras();
-        if (extras != null) {
-            currentVideoId = extras.getString("videoId");
-            displayClip(currentVideoId);
+        currentVideoId = extras.getString("videoId");
 
+        if (extras != null) {
+            try {
+                displayClip(currentVideoId);
+                addDetails(extras.getString("showname"));
+
+            } catch (RuntimeException e) {
+                Toast.makeText(this, "Something went wrong",
+                        Toast.LENGTH_LONG).show();
+            }
         }
 
         Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" videos" ,
                 Toast.LENGTH_LONG).show();
-        addDetails(extras.getString("showname"));
 
         editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
         editToggle.setOnClickListener(new View.OnClickListener() {
