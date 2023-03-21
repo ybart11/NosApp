@@ -34,6 +34,7 @@ public class ViewActivity extends AppCompatActivity {
     String currentVideoId;
     YoutubeUtil yt;
     SwipeRefreshLayout swipeRefreshLayout;
+    ToggleButton editToggle;
 
 
     @Override
@@ -60,9 +61,7 @@ public class ViewActivity extends AppCompatActivity {
                 Toast.LENGTH_LONG).show();
         addDetails(extras.getString("showname"));
 
-
-
-        final ToggleButton editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
+        editToggle = (ToggleButton) findViewById(R.id.toggleHeart);
         editToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +69,10 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
 
+        initRefresh();
+    }
+
+    public void initRefresh() {
         // What happens when user refreshes
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -90,6 +93,7 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
     }
+
 
     public void expand(View view) {
         int v = (actors.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
