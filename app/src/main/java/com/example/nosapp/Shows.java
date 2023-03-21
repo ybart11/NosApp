@@ -75,6 +75,10 @@ public class Shows {
         this.logo = logo;
     }
 
+    public Shows(String showname, String playlistid) {
+        this.showname = showname;
+        this.playlistId = playlistid;
+    }
 
     public int getShowID() {
         return showID;
