@@ -57,7 +57,7 @@ public class ViewActivity extends AppCompatActivity {
             displayClip(currentVideoId);
         }
 
-        Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" videos" ,
+        Toast.makeText(this, "Generating \"" + extras.getString("showname") + "\" video" ,
                 Toast.LENGTH_LONG).show();
         addDetails(extras.getString("showname"));
 
@@ -87,7 +87,7 @@ public class ViewActivity extends AppCompatActivity {
                 String newVideoId = yt.searchForVideoInPlaylist(extras.getString("playlistId"));
                 if (!newVideoId.equals(currentVideoId)) {
                     currentVideoId = newVideoId;
-                    displayNewClip(currentVideoId);
+                    displayClip(currentVideoId);
                 }
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -107,6 +107,7 @@ public class ViewActivity extends AppCompatActivity {
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
 
+        // Display video when user first clicks on this activity
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
@@ -138,8 +139,8 @@ public class ViewActivity extends AppCompatActivity {
                 youTubePlayer.cueVideo(videoId, 0 );
             }
         });
-    }
-    private void displayNewClip(String videoId) {
+
+        // Display video when user refreshes
         youTubePlayerView.getYouTubePlayerWhenReady(new YouTubePlayerCallback() {
             @Override
             public void onYouTubePlayer(@NonNull YouTubePlayer youTubePlayer) {
@@ -171,6 +172,7 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
     }
+
     private void addDetails(String showname) {
         AzureSQL az = new AzureSQL();
         ArrayList<Shows> details = az.getShowDetail(showname);

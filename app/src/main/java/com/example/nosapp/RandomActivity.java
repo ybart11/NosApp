@@ -81,7 +81,7 @@ public class RandomActivity extends AppCompatActivity {
                 // Generate new videoId
                 if (!newVideoId.equals(currentVideoId)) {
                     currentVideoId = newVideoId;
-                    displayNewClip(currentVideoId);
+                    displayClip(currentVideoId);
                     addDetails(currentShowname);
                 }
                 swipeRefreshLayout.setRefreshing(false);
@@ -109,6 +109,7 @@ public class RandomActivity extends AppCompatActivity {
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
 
+        // Display video when user first clicks on showIcon
         youTubePlayerView.addYouTubePlayerListener( new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
@@ -140,9 +141,8 @@ public class RandomActivity extends AppCompatActivity {
                 youTubePlayer.cueVideo(videoId, 0 );
             }
         });
-    }
 
-    private void displayNewClip(String videoId) {
+        // Display video when user refreshes
         youTubePlayerView.getYouTubePlayerWhenReady(new YouTubePlayerCallback() {
             @Override
             public void onYouTubePlayer(@NonNull YouTubePlayer youTubePlayer) {
