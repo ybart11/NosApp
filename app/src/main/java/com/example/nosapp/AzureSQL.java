@@ -166,6 +166,37 @@ public class AzureSQL {
         return details;
     }
 
+    public static ArrayList<Actors> getActors(String showname) {
+        Connection connect;
+        String query = "SELECT order, characterName, actorName from Actors WHERE showname=?";
+        ArrayList<Actors> details = new ArrayList<>();
+
+        AzureCon c = new AzureCon();
+        connect = c.conclass();
+
+        try (
+                PreparedStatement statement = connect.prepareStatement(query)) {
+            statement.setString(1, showname);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int order = resultSet.getInt("order");
+                String characterName = resultSet.getString("characterName");
+                String actorName = resultSet.getString("actorName");
+
+                Actors actor = new Actors(order, characterName, actorName);
+                details.add(actor);
+
+            }
+            connect.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return details;
+    }
+
     public static ArrayList<Shows> getShows() {
         Connection connect;
         String query = "SELECT showname, logo FROM Shows";
