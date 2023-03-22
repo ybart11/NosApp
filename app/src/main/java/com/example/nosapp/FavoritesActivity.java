@@ -48,6 +48,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
     public void onItemClick(int position) {
         Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
 
+
         intent.putExtra("favShowLogo", favsList.get(position).getLogo());
         startActivity(intent);
 

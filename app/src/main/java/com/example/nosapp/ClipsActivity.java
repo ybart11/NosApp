@@ -30,7 +30,7 @@ public class ClipsActivity extends AppCompatActivity {
         String favShowName = extras.getString("favShowLogo");
 
         if (extras != null) {
-            adapter = new ClipsAdapter(az.getClips(favShowName), this.getLifecycle());
+            adapter = new ClipsAdapter(az.getClips(favShowName), this.getLifecycle(),this);
         }
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

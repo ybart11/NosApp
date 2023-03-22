@@ -1,5 +1,8 @@
 package com.example.nosapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +21,14 @@ import java.util.ArrayList;
 
 public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
 
-    private ArrayList<String> videoIds;
+    private static ArrayList<String> videoIds;
+    private final Context context;
     private Lifecycle lifecycle;
 
-    public ClipsAdapter(ArrayList<String> videoIds, Lifecycle lifecycle) {
+    public ClipsAdapter(ArrayList<String> videoIds, Lifecycle lifecycle, Context context) {
         this.videoIds = videoIds;
         this.lifecycle = lifecycle;
+        this.context = context;
     }
 
     @NonNull
@@ -33,7 +38,7 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.clips_item, parent, false);
         lifecycle.addObserver(youTubePlayerView);
 
-        return new ViewHolder(youTubePlayerView);
+        return new ViewHolder(youTubePlayerView, context);
     }
 
     @Override
@@ -46,13 +51,15 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
         return videoIds.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private final Context context;
         private YouTubePlayerView youTubePlayerView;
         YouTubePlayer youTubePlayer;
         private String currentVideoId;
 
-        ViewHolder (YouTubePlayerView playerView) {
+        ViewHolder (YouTubePlayerView playerView,Context context) {
             super(playerView);
+            this.context = context;
             youTubePlayerView = playerView;
 
 
@@ -73,6 +80,12 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
                         @Override
                         public void onClick(View view) {
                             // Handle click on the delete menu item here
+                            AzureSQL.deleteFavorite(currentVideoId);
+                            int index = videoIds.indexOf(currentVideoId);
+                            if (index != -1) {
+                                videoIds.remove(index);
+                                notifyItemRemoved(index);
+                            }
                         }
                     }));
 
@@ -81,6 +94,12 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
                         @Override
                         public void onClick(View view) {
                             // Handle click on the delete menu item here
+                            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                            shareIntent.setType("text/plain");
+                            shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
+                                    " Nostalgia App: " +
+                                    "\nwww.youtube.com/watch?v=" + currentVideoId);
+                            context.startActivity(Intent.createChooser(shareIntent, "Share using"));
 
                         }
                     }));
