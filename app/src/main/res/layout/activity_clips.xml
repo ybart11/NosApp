@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E4F4FC"
     tools:context=".ClipsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,26 +16,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/ibShare"
-            android:layout_width="162dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="64dp"
-            android:background="@color/white"
+            android:id="@+id/imageButton"
+            android:layout_width="54dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="329dp"
+            android:background="#E4F4FC"
             android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/gradientshare" />
-
-        <ImageButton
-            android:id="@+id/ibSettings"
-            android:layout_width="166dp"
-            android:layout_height="66dp"
-            android:background="@color/white"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toEndOf="@+id/ibShare"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/settingsicon" />
-
+            app:srcCompat="@drawable/backlog" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -43,57 +37,9 @@
         android:layout_height="528dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/ibRandom"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:backgroundTint="#FDFDFD"
-            android:maxWidth="8dp"
-            android:maxHeight="64dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/refreshnav" />
-
-        <ImageButton
-            android:id="@+id/ibHome"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:backgroundTint="#FEFEFE"
-            android:maxWidth="8dp"
-            android:maxHeight="64dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/tvnav" />
-
-        <ImageButton
-            android:id="@+id/ibFavorites"
-            android:layout_width="wrap_content"
-            android:layout_height="88dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:backgroundTint="#FDFDFD"
-            android:maxWidth="8dp"
-            android:maxHeight="64dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/listnav" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
