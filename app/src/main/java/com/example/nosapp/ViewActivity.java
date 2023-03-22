@@ -46,9 +46,6 @@ public class ViewActivity extends AppCompatActivity {
         homeButton();
 
 
-        actors = findViewById(R.id.actors);
-        layout = findViewById(R.id.layout);
-
 
         extras = getIntent().getExtras();
         if (extras != null) {

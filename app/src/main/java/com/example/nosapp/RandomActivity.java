@@ -40,9 +40,9 @@ public class RandomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random);
 
-        randomButton();
+
         homeButton();
-        favoritesButton();
+
 
         showList = new ArrayList<>();
         yt = new YoutubeUtil();
@@ -178,7 +178,8 @@ public class RandomActivity extends AppCompatActivity {
             @Override
             public void onYouTubePlayerEnterFullScreen() {
                 findViewById(R.id.scrollView).setVisibility(View.GONE);
-                findViewById(R.id.linearLayout2).setVisibility(View.GONE);
+                findViewById(R.id.backButton).setVisibility(View.GONE);
+
 
                 // Set orientation to landscape
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -188,7 +189,7 @@ public class RandomActivity extends AppCompatActivity {
             @Override
             public void onYouTubePlayerExitFullScreen() {
                 findViewById(R.id.scrollView).setVisibility(View.VISIBLE);
-                findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
+                findViewById(R.id.backButton).setVisibility(View.VISIBLE);
 
                 // Set orientation to portrait
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -240,18 +241,8 @@ public class RandomActivity extends AppCompatActivity {
         }
     }
 
-    private void randomButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
-        ibList.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(RandomActivity.this,RandomActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
     private void homeButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
+        ImageButton ibList = (ImageButton) findViewById(R.id.backButton);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(RandomActivity.this, MainActivity.class);
@@ -261,15 +252,6 @@ public class RandomActivity extends AppCompatActivity {
         });
     }
 
-    private void favoritesButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
-        ibList.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(RandomActivity.this, FavoritesActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
+
 
 }
