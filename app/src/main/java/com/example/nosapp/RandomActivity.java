@@ -173,6 +173,27 @@ public class RandomActivity extends AppCompatActivity {
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
+
+        youTubePlayerView.addFullScreenListener(new YouTubePlayerFullScreenListener() {
+            @Override
+            public void onYouTubePlayerEnterFullScreen() {
+                findViewById(R.id.scrollView).setVisibility(View.GONE);
+                findViewById(R.id.linearLayout2).setVisibility(View.GONE);
+
+                // Set orientation to landscape
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+            }
+
+            @Override
+            public void onYouTubePlayerExitFullScreen() {
+                findViewById(R.id.scrollView).setVisibility(View.VISIBLE);
+                findViewById(R.id.linearLayout2).setVisibility(View.VISIBLE);
+
+                // Set orientation to portrait
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        });
     }
 
     private void addDetails(String showname) {

@@ -26,6 +26,7 @@ public class ClipsActivity extends AppCompatActivity {
         AzureSQL az = new AzureSQL();
         extras = getIntent().getExtras();
 
+
         // Show logo passed from FavoritesActivity
         String favShowName = extras.getString("favShowLogo");
 

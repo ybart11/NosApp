@@ -93,7 +93,7 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
                             R.drawable.ic_baseline_share_24,new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            // Handle click on the delete menu item here
+                            // Handle click on the Share menu item here
                             Intent shareIntent = new Intent(Intent.ACTION_SEND);
                             shareIntent.setType("text/plain");
                             shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
@@ -104,6 +104,7 @@ public class ClipsAdapter extends RecyclerView.Adapter<ClipsAdapter.ViewHolder>{
                         }
                     }));
                     defaultPlayerUiController.showMenuButton(true);
+
 
 
                     defaultPlayerUiController.showYouTubeButton(true);

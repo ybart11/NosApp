@@ -35,7 +35,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
         az = new AzureSQL();
-        String sortBy = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortfield", "logo");
+        String sortBy = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortby", "logo");
         String sortOrder = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortorder", "ASC");
 
         favsList = az.getFavorites(sortBy, sortOrder);
@@ -48,36 +48,12 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
 
     @Override
     public void onResume(Bundle savedInstanceState) {
-//        super.onResume();
-//
-//        String sortBy = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortfield", "showname");
-//        String sortOrder = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortorder", "ASC");
-//
-//        try {
-//            favsList = AzureSQL.getFavorites(sortBy, sortOrder);
-//            if (favsList.size() > 0) {
-//                recyclerView = findViewById(R.id.rvFavorites);
-//                recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-//
-//                favsAdapter = new FavoritesAdapter(favsList,this, this);
-//                recyclerView.setAdapter(favsAdapter);
-//
-//                loadFavorites();
-//            }
-//            else {
-//                Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        }
-//        catch (Exception e) {
-//            Toast.makeText(this, "Error retrieving contacts", Toast.LENGTH_LONG).show();
-//        }
     }
-
 
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(FavoritesActivity.this, ClipsActivity.class);
+        Bundle args = new Bundle();
 
 
         intent.putExtra("favShowLogo", favsList.get(position).getLogo());
@@ -86,14 +62,6 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         Toast.makeText(this, "Generating \"" +  favsList.get(position).getLogo()
                         + "\" video" ,
                 Toast.LENGTH_LONG).show();
-    }
-
-    private void loadFavorites() {
-
-        FavoritesAdapter adapter = new FavoritesAdapter( favsList,this, this);
-        recyclerView.setAdapter(adapter);
-
-        favsAdapter.notifyDataSetChanged();
     }
 
     private void settingsButton() {
@@ -144,7 +112,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
     @Override
     public void onSettingsDialogApply(String sortBy, String sortOrder) {
         az = new AzureSQL();
-        favsList = az.getFavorites("logo", sortOrder);
+        favsList = az.getFavorites(sortBy, sortOrder);
         favsAdapter = new FavoritesAdapter(favsList, this, this);
         recyclerView.setAdapter(favsAdapter);
         favsAdapter.notifyDataSetChanged();
