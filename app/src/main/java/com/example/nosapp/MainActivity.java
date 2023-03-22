@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.kim_possible_logo,
             R.drawable.the_fairly_oddparents_logo,
             R.drawable.hannah_montana_logo,
-            R.drawable.courage_the_cowardly_dog_logo,
+            R.drawable.courage_the_coward_dog_logo,
             R.drawable.ben_10_logo,
             R.drawable.drake_josh_logo,
             R.drawable.fosters_home_for_imaginary_friends_logo,
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.the_powerpuff_girls_logo,
             R.drawable.the_suite_life_of_zack_cody_logo,
             R.drawable.the_wild_thornberrys_logo,
-            R.drawable.zoey_101,
+            R.drawable.zoey_101_logo,
             R.drawable.danny_phantom_logo};
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
