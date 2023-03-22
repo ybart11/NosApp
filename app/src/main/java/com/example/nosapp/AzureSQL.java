@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,8 +148,11 @@ public class AzureSQL {
             while (resultSet.next()) {
                 String name = resultSet.getString("showname");
                 String channel = resultSet.getString("channel");
-                Date startDate = resultSet.getDate("startDate");
-                Date endDate = resultSet.getDate("endDate");
+              //  Date startDate = resultSet.getDate("startDate");
+              //  Date endDate = resultSet.getDate("endDate");
+                String startDate = new SimpleDateFormat("MM-dd-yyyy").format(resultSet.getDate("startDate"));
+                String endDate = resultSet.getDate("endDate") != null ? new SimpleDateFormat("MM-dd-yyyy").format(resultSet.getDate("endDate")) : "Present";
+
                 int seasons = resultSet.getInt("seasons");
                 int episodes = resultSet.getInt("episodes");
                 String synopsis = resultSet.getString("synopsis");

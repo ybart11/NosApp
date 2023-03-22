@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0F5FD"
     tools:context=".ClipsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,24 +17,29 @@
 
         <ImageButton
             android:id="@+id/ibShare"
-            android:layout_width="162dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="64dp"
-            android:background="@color/white"
-            android:scaleType="centerCrop"
+            android:layout_width="116dp"
+            android:layout_height="69dp"
+            android:layout_marginStart="204dp"
+            android:layout_marginTop="16dp"
+            android:background="#DFF4FC"
+            android:scaleType="fitCenter"
+            android:tint="#6FB9F1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/gradientshare" />
+            app:srcCompat="@drawable/ic_baseline_share_24" />
 
         <ImageButton
             android:id="@+id/ibSettings"
-            android:layout_width="166dp"
-            android:layout_height="66dp"
+            android:layout_width="121dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="16dp"
             android:background="@color/white"
             android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.903"
             app:layout_constraintStart_toEndOf="@+id/ibShare"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/settingsicon" />
+            app:srcCompat="@drawable/upsetlogo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,49 +56,53 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_width="392dp"
+        android:layout_height="98dp"
+        android:background="#7FB8ED"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/ibRandom"
+            android:id="@+id/imageButtonRandom"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="#7FB8ED"
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/refreshnav" />
+            android:src="@drawable/finalrandicon" />
 
         <ImageButton
-            android:id="@+id/ibHome"
+            android:id="@+id/imageButtonHome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="#7FB8ED"
             android:backgroundTint="#FEFEFE"
+            android:cropToPadding="false"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/tvnav" />
+            android:src="@drawable/uphomeicon" />
 
         <ImageButton
-            android:id="@+id/ibFavorites"
+            android:id="@+id/imageButtonFavorites"
             android:layout_width="wrap_content"
-            android:layout_height="88dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="#7FB8ED"
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/listnav" />
+            android:src="@drawable/upfavlist" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

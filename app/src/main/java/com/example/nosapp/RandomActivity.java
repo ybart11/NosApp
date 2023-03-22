@@ -3,6 +3,7 @@ package com.example.nosapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+//import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,9 +39,9 @@ public class RandomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random);
 
-        randomButton();
+      //  randomButton();
         homeButton();
-        favoritesButton();
+      //  favoritesButton();
 
         showList = new ArrayList<>();
         yt = new YoutubeUtil();
@@ -216,33 +217,11 @@ public class RandomActivity extends AppCompatActivity {
             Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show();
         }
     }
-
-    private void randomButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
-        ibList.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(RandomActivity.this,RandomActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
     private void homeButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
+        ImageButton ibList = (ImageButton) findViewById(R.id.backButton);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(RandomActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void favoritesButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
-        ibList.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(RandomActivity.this, FavoritesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

@@ -25,9 +25,9 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        randomButton();
-        homeButton();
-        favoritesButton();
+       // randomButton();
+       // homeButton();
+       // favoritesButton();
         settingsButton();
 
         recyclerView = findViewById(R.id.rvFavorites);
@@ -76,7 +76,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         });
     }
 
-
+/*
     private void randomButton() {
         ImageButton ibList = (ImageButton) findViewById(R.id.ibRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
@@ -108,4 +108,6 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
             }
         });
     }
+
+ */
 }

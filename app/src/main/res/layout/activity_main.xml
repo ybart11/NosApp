@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E0F5FD"
     tools:context=".MainActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="406dp"
-        android:layout_height="167dp"
+        android:layout_width="577dp"
+        android:layout_height="185dp"
         app:layout_constraintBottom_toTopOf="@+id/rvShows"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.403"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -28,17 +29,19 @@
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.037"
-            app:srcCompat="@drawable/noslogo" />
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/uplogo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvShows"
-        android:layout_width="410dp"
-        android:layout_height="494dp"
+        android:layout_width="400dp"
+        android:layout_height="396dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,9 +49,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_width="393dp"
+        android:layout_height="86dp"
+        android:background="#7FB8ED"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,11 +63,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="#7FB8ED"
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/refreshicon2" />
+            android:src="@drawable/finalrandicon" />
 
         <ImageButton
             android:id="@+id/imageButtonHome"
@@ -72,23 +76,26 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="#7FB8ED"
             android:backgroundTint="#FEFEFE"
+            android:cropToPadding="false"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/tvicon2" />
+            android:src="@drawable/uphomeicon" />
 
         <ImageButton
             android:id="@+id/imageButtonFavorites"
             android:layout_width="wrap_content"
-            android:layout_height="88dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:background="#7FB8ED"
             android:backgroundTint="#FDFDFD"
             android:maxWidth="8dp"
             android:maxHeight="64dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/listlogo2" />
+            android:src="@drawable/upfavlist" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

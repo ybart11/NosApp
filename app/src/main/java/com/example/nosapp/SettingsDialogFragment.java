@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -17,7 +18,7 @@ public class SettingsDialogFragment extends DialogFragment {
     private RadioGroup sortByRadioGroup, sortOrderRadioGroup;
     private RadioButton nameRadioButton,
             ascendingRadioButton, descendingRadioButton;
-    private Button cancelButton, selectButton;
+    private ImageButton cancelButton, selectButton;
 
     private String sortBy, sortOrder;
 
@@ -51,8 +52,8 @@ public class SettingsDialogFragment extends DialogFragment {
         ascendingRadioButton = view.findViewById(R.id.radioAscending);
         descendingRadioButton = view.findViewById(R.id.radioDescending);
 
-        cancelButton = view.findViewById(R.id.buttonCancel);
-        selectButton = view.findViewById(R.id.buttonSelect);
+        cancelButton = view.findViewById(R.id.cancelButton);
+        selectButton = view.findViewById(R.id.selectButton);
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override

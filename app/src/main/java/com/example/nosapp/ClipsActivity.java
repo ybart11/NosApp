@@ -39,28 +39,28 @@ public class ClipsActivity extends AppCompatActivity {
 
         shareButton();
 
-        randomButton();
+        // randomButton();
         homeButton();
-        favoritesButton();
+        // favoritesButton();
         settingsButton();
 
     }
 
 
-
     private void shareButton() {
         ImageButton ibList = findViewById(R.id.ibShare);
-        ibList.setOnClickListener (new View.OnClickListener() {
+        ibList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I found this clip on the" +
                         " Nostalgia App: " +
-                        "\nwww.youtube.com/watch?v=" );
+                        "\nwww.youtube.com/watch?v=");
                 startActivity(Intent.createChooser(shareIntent, "Share using"));
             }
         });
     }
+
     private void settingsButton() {
         ImageButton ibSettings = findViewById(R.id.ibSettings);
         ibSettings.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +72,8 @@ public class ClipsActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*
     private void randomButton() {
         ImageButton ibList = findViewById(R.id.ibRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
@@ -82,13 +84,7 @@ public class ClipsActivity extends AppCompatActivity {
             }
         });
     }
-    private void homeButton() {
-        ImageButton ibList = findViewById(R.id.ibHome);
-        ibList.setOnClickListener (new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(ClipsActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+
             }
         });
     }
@@ -100,6 +96,18 @@ public class ClipsActivity extends AppCompatActivity {
                 Intent intent = new Intent(ClipsActivity.this, FavoritesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+            }
+        });
+    }
+    */
+    private void homeButton() {
+        ImageButton ibList = findViewById(R.id.backButton);
+        ibList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(ClipsActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
             }
         });
     }
