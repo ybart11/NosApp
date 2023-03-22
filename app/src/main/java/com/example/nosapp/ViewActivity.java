@@ -42,9 +42,9 @@ public class ViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        randomButton();
+
         homeButton();
-        favoritesButton();
+
 
         actors = findViewById(R.id.actors);
         layout = findViewById(R.id.layout);
@@ -205,19 +205,9 @@ public class ViewActivity extends AppCompatActivity {
         }
     }
 
-    private void randomButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
-        ibList.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(ViewActivity.this, RandomActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
 
     private void homeButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
+        ImageButton ibList = (ImageButton) findViewById(R.id.backButton);
         ibList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(ViewActivity.this, MainActivity.class);
@@ -227,16 +217,7 @@ public class ViewActivity extends AppCompatActivity {
         });
     }
 
-    private void favoritesButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
-        ibList.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(ViewActivity.this, FavoritesActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-    }
+
 
     public void onDefaultToggleClick(View view) {
         ToggleButton toggleButton = (ToggleButton) view;
