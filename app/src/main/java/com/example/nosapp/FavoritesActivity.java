@@ -78,7 +78,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
 
 
     private void randomButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.ibRandom);
+        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonRandom);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(FavoritesActivity.this,RandomActivity.class);
@@ -88,7 +88,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         });
     }
     private void homeButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.ibHome);
+        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonHome);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
@@ -99,7 +99,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
     }
 
     private void favoritesButton() {
-        ImageButton ibList = (ImageButton) findViewById(R.id.ibFavorites);
+        ImageButton ibList = (ImageButton) findViewById(R.id.imageButtonFavorites);
         ibList.setOnClickListener (new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(FavoritesActivity.this, FavoritesActivity.class);
