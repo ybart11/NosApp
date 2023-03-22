@@ -1,6 +1,7 @@
 package com.example.nosapp;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter {
     }
 
     public interface RecyclerViewInterface {
+
+        void onResume(Bundle savedInstanceState);
 
         void onItemClick(int position);
     }

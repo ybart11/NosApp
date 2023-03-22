@@ -1,10 +1,11 @@
 package com.example.nosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class FavoritesActivity extends AppCompatActivity implements FavoritesAdapter.RecyclerViewInterface {
+public class FavoritesActivity extends AppCompatActivity implements FavoritesAdapter.RecyclerViewInterface, SettingsDialogFragment.SettingsDialogListener {
 
     private RecyclerView recyclerView;
     private FavoritesAdapter favsAdapter;
@@ -34,13 +35,43 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
         az = new AzureSQL();
+        String sortBy = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortfield", "logo");
+        String sortOrder = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortorder", "ASC");
 
-        favsList = az.getFavorites();
+        favsList = az.getFavorites(sortBy, sortOrder);
 
         favsAdapter = new FavoritesAdapter(favsList,this, this);
         recyclerView.setAdapter(favsAdapter);
+//
+//        loadFavorites();
+    }
 
-        loadFavorites();
+    @Override
+    public void onResume(Bundle savedInstanceState) {
+//        super.onResume();
+//
+//        String sortBy = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortfield", "showname");
+//        String sortOrder = getSharedPreferences("NosAppPreferences", Context.MODE_PRIVATE).getString("sortorder", "ASC");
+//
+//        try {
+//            favsList = AzureSQL.getFavorites(sortBy, sortOrder);
+//            if (favsList.size() > 0) {
+//                recyclerView = findViewById(R.id.rvFavorites);
+//                recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+//
+//                favsAdapter = new FavoritesAdapter(favsList,this, this);
+//                recyclerView.setAdapter(favsAdapter);
+//
+//                loadFavorites();
+//            }
+//            else {
+//                Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        }
+//        catch (Exception e) {
+//            Toast.makeText(this, "Error retrieving contacts", Toast.LENGTH_LONG).show();
+//        }
     }
 
 
@@ -109,4 +140,14 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
             }
         });
     }
+
+    @Override
+    public void onSettingsDialogApply(String sortBy, String sortOrder) {
+        az = new AzureSQL();
+        favsList = az.getFavorites("logo", sortOrder);
+        favsAdapter = new FavoritesAdapter(favsList, this, this);
+        recyclerView.setAdapter(favsAdapter);
+        favsAdapter.notifyDataSetChanged();
+    }
+
 }

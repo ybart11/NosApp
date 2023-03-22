@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,62 @@ public class AzureSQL {
 
         return favsList;
     }
+
+    public static ArrayList<Favorites> getFavorites(String sortField, String sortOrder ) {
+        Connection connect;
+        AzureCon c = new AzureCon();
+        connect = c.conclass();
+        String query = "SELECT DISTINCT s.logo FROM Favorites f JOIN Shows s ON f.showname = s.showname ORDER BY " + sortField + " " + sortOrder;
+
+        ArrayList<Favorites> favsList = new ArrayList<>();
+
+        try (
+                PreparedStatement statement = connect.prepareStatement(query);
+                ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                String logo = resultSet.getString("logo");
+                Log.d("Favorites", "Logo: " + logo);
+                Favorites favs = new Favorites(logo);
+                favsList.add(favs);
+            }
+            connect.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return favsList;
+    }
+
+
+//    public static ArrayList<Favorites> getFavorites(String sortField, String sortOrder ) {
+//        Connection connect;
+//        AzureCon c = new AzureCon();
+//        connect = c.conclass();
+//        String query = "SELECT DISTINCT s.logo FROM Favorites f JOIN Shows s ON f.showname = s.showname ORDER BY s.logo ?;";
+//
+//        ArrayList<Favorites> favsList = new ArrayList<>();
+//
+//        try (
+//                PreparedStatement statement = connect.prepareStatement(query);
+//                statement.setString(1, sortOrder);
+//                ResultSet resultSet = statement.executeQuery()) {
+//
+//            while (resultSet.next()) {
+//                String logo = resultSet.getString("logo");
+//                Log.d("Favorites", "Logo: " + logo);
+//                Favorites favs = new Favorites(logo);
+//                favsList.add(favs);
+//            }
+//            connect.close();
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return favsList;
+//    }
 
 
 //    public static ArrayList<Favorites> getClips(String showname) {
@@ -147,8 +204,8 @@ public class AzureSQL {
             while (resultSet.next()) {
                 String name = resultSet.getString("showname");
                 String channel = resultSet.getString("channel");
-                Date startDate = resultSet.getDate("startDate");
-                Date endDate = resultSet.getDate("endDate");
+                String startDate = new SimpleDateFormat("MM-dd-yyyy").format(resultSet.getDate("startDate"));
+                String endDate = resultSet.getDate("endDate") != null ? new SimpleDateFormat("MM-dd-yyyy").format(resultSet.getDate("endDate")) : "Present";
                 int seasons = resultSet.getInt("seasons");
                 int episodes = resultSet.getInt("episodes");
                 String synopsis = resultSet.getString("synopsis");

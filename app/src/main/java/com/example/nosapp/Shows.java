@@ -7,8 +7,8 @@ public class Shows {
     private String showname;
     private String channel;
     private String type;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private int seasons;
     private int episodes;
     private String synopsis;
@@ -22,7 +22,7 @@ public class Shows {
 
 
     public Shows(String showname, String channel, String type,
-                 Date startDate, Date endDate, int seasons,
+                 String startDate, String endDate, int seasons,
                  int episodes, String synopsis, String logo) {
 
         this.showname = showname;
@@ -37,8 +37,8 @@ public class Shows {
 
     }
 
-    public Shows(String showname, String channel, Date startDate,
-                 Date endDate, int seasons, int episodes,
+    public Shows(String showname, String channel, String startDate,
+                 String endDate, int seasons, int episodes,
                  String synopsis) {
         this.showname = showname;
         this.channel = channel;
@@ -102,12 +102,12 @@ public class Shows {
     public void setType(String i) {
         type = i;
     }
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
-    public void setStartDate(Date i) { startDate = i; }
-    public Date getEndDate() { return endDate; }
-    public void setEndDate(Date i) { endDate = i; }
+    public void setStartDate(String i) { startDate = i; }
+    public String getEndDate() { return endDate; }
+    public void setEndDate(String i) { endDate = i; }
     public int getSeasons() {
         return seasons;
     }
